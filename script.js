@@ -2,14 +2,14 @@ var config = {
     type: Phaser.AUTO,
     width: 1200,
     height: 1200,
-    backgroundColor: "#333", // game background color
+    backgroundColor: "#ABC8A6", // game background color
     physics: {
         default: 'matter',
         matter: {
             gravity: {x: 0, y: 0},
             debug: {
-                showBody: true,
-                showStaticBody: true
+                showBody: false, //true,
+                showStaticBody: false //true
             }
         }
     },
@@ -24,7 +24,7 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.svg('HoleOne', 'img/HoleOne.svg');
+    //this.load.svg('HoleOne', 'img/HoleOne.svg');
 }
 
 function create ()
@@ -32,13 +32,14 @@ function create ()
     // Matter world bounds
     //this.matter.world.setBounds(0, 0, game.config.width, game.config.height);
 
+    /*
     this.input.on("pointerdown", function(pointer) {
 
         let x = pointer.upX;
         let y = pointer.upY;
         console.log("x:", x - 100, " y:", y - 300);
 
-    }, this);
+    }, this); */
 
     /*
     // Get SVG from data
@@ -63,10 +64,12 @@ function create ()
     */
 
     // HoleOne ref image
-    let h1 = this.add.image(600, 600, 'HoleOne');
+    //let h1 = this.add.image(600, 600, 'HoleOne');
 
-    // TODO - draw HoleOne overtop ref image
-
+    let holeOne = new CreateHole(
+        this,
+        new CreateSVG(data.holeOne).data
+    );
 
     // Resize Canvas (to increase resolution)
     let canvas = document.querySelector("canvas");
