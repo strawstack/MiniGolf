@@ -1,5 +1,5 @@
 class CreateHole {
-    constructor(scene, svg) {
+    constructor(scene, svg, onComplete) {
         this.scene = scene;
 
         // Course
@@ -63,6 +63,15 @@ class CreateHole {
             hole.radius // radius
         );
 
+        this.scene.matter.add.gameObject(holeGraphics, {
+            shape: {
+                type: 'circle',
+                radius: hole.radius
+            },
+            label: 'hole',
+            isSensor: true // trigger events but don't react
+        });
+
         // Ball
         let ballElem = svg.querySelector("#ball");
         let ball = {
@@ -87,7 +96,9 @@ class CreateHole {
             shape: {
                 type: 'circle',
                 radius: ball.radius
-            }});
+            },
+            label: 'ball'
+        });
 
         // Walls
         let walls = svg.querySelectorAll(".wall");
@@ -109,7 +120,8 @@ class CreateHole {
             );
         }
 
-        // TODO - Remove this. Used for testing physics
+        // TODO - Remove. Used for testing physics
+        // Replace with better putting mechanic
         this.scene.input.on("pointerup", function(pointer) {
 
             // Ball position
@@ -137,9 +149,27 @@ class CreateHole {
             });
         }, this);
 
+        // Ball physics properties
         ballGraphics.setFriction(0.01);
         ballGraphics.setFrictionAir(0.01);
         ballGraphics.setBounce(0.8);
         ballGraphics.setDensity(0.04);
+
+        // Collisions
+        this.scene.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
+            let _ball = undefined;
+            let _hole = undefined;
+            if (bodyA.label == "ball") { _ball = bodyA; }
+            if (bodyB.label == "ball") { _ball = bodyB; }
+            if (bodyA.label == "hole") { _hole = bodyA; }
+            if (bodyB.label == "hole") { _hole = bodyB; }
+            if (_ball != undefined && _hole != undefined) {
+                ballGraphics.setPosition(
+                    hole.x + hole.radius,
+                    hole.y + hole.radius);
+                ballGraphics.setVelocity(0, 0);
+                setTimeout(onComplete, 100);
+            }
+        });
     }
 }

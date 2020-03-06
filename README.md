@@ -10,4 +10,6 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 
 - [ ] Make holes winnable
 
-- [ ] Transition between holes on win or on menu select
+- [ ] Transition between holes on win. Different scenes would be ideal
+
+- [ ] 
