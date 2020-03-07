@@ -22,7 +22,7 @@ class HoleOne extends Phaser.Scene {
             this,
             new CreateSVG(data.holeOne).data,
             () => {
-                alert("Hole Completed!")
+                alert("HoleOne Complete!")
                 this.scene.start("HoleTwo");
             }
         );

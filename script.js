@@ -13,7 +13,7 @@ var config = {
             }
         }
     },
-    scene: [new HoleOne(config), new HoleTwo(config)]
+    scene: [new HoleTwo(config), new HoleOne(config)]
 };
 
 var game = new Phaser.Game(config);

@@ -3,28 +3,31 @@ class CreateHole {
         this.scene = scene;
 
         // Course
-        let courseElem = svg.querySelector("#course");
-        let course = {
-            x: parseInt(courseElem.getAttribute("x")),
-            y: parseInt(courseElem.getAttribute("y")),
-            width: parseInt(courseElem.getAttribute("width")),
-            height: parseInt(courseElem.getAttribute("height"))
-        };
+        let courseElems = svg.querySelectorAll(".course");
 
-        let courseGraphics = this.scene.add.graphics({
-            x: course.x,
-            y: course.y});
+        for (let courseElem of courseElems) {
+            let course = {
+                x: parseInt(courseElem.getAttribute("x")),
+                y: parseInt(courseElem.getAttribute("y")),
+                width: parseInt(courseElem.getAttribute("width")),
+                height: parseInt(courseElem.getAttribute("height"))
+            };
 
-        courseGraphics.fillStyle(0x83A77D);
-        courseGraphics.fillRect(
-            0, // x
-            0, // y
-            course.width, // width
-            course.height // height
-        );
+            let courseGraphics = this.scene.add.graphics({
+                x: course.x,
+                y: course.y});
+
+            courseGraphics.fillStyle(0x83A77D);
+            courseGraphics.fillRect(
+                0, // x
+                0, // y
+                course.width, // width
+                course.height // height
+            );
+        }
 
         // Mat
-        let matElem = svg.querySelector("#mat");
+        let matElem = svg.querySelector(".mat");
         let mat = {
             x: parseInt(matElem.getAttribute("x")),
             y: parseInt(matElem.getAttribute("y")),
@@ -45,7 +48,7 @@ class CreateHole {
         );
 
         // Hole
-        let holeElem = svg.querySelector("#hole");
+        let holeElem = svg.querySelector(".hole");
         let hole = {
             x: parseInt(holeElem.getAttribute("x")),
             y: parseInt(holeElem.getAttribute("y")),
@@ -73,7 +76,7 @@ class CreateHole {
         });
 
         // Ball
-        let ballElem = svg.querySelector("#ball");
+        let ballElem = svg.querySelector(".ball");
         let ball = {
             x: parseInt(ballElem.getAttribute("x")),
             y: parseInt(ballElem.getAttribute("y")),
@@ -118,6 +121,52 @@ class CreateHole {
                     "restitution": 1
                 }
             );
+        }
+
+        // Wedge
+        let wedgeElems = svg.querySelectorAll(".wedge");
+        for (let wedgeElem of wedgeElems) {
+            let wedge = {
+                x: parseInt(wedgeElem.getAttribute("x")),
+                y: parseInt(wedgeElem.getAttribute("y")),
+                width: parseInt(wedgeElem.getAttribute("width")),
+                height: parseInt(wedgeElem.getAttribute("height"))
+            };
+
+            let wedgeGraphics = this.scene.add.graphics({
+                x: wedge.x,
+                y: wedge.y
+            });
+
+            // Wedge Matter physics
+            let b1 = this.scene.matter.add.gameObject(wedgeGraphics, {
+                shape: {
+                    type: 'fromVertices',
+                    verts: [
+                        {x: 0, y: 0},
+                        {x: wedge.width, y: 0},
+                        {x: wedge.width, y: wedge.height}
+                    ]
+                },
+                label: 'wedge',
+                isStatic: true,
+                restitution: 1
+            });
+
+            let ox = b1.body.centerOffset.x;
+            let oy = b1.body.centerOffset.y;
+
+            wedgeGraphics.setPosition(
+                wedge.x + ox,
+                wedge.y + oy,
+            );
+
+            wedgeGraphics.fillStyle(0xA87E60);
+            wedgeGraphics.moveTo(0 - ox, 0 - oy);
+            wedgeGraphics.lineTo(wedge.width - ox, 0 - oy);
+            wedgeGraphics.lineTo(wedge.width - ox, wedge.height - oy);
+            wedgeGraphics.closePath();
+            wedgeGraphics.fillPath();
         }
 
         // TODO - Remove. Used for testing physics
