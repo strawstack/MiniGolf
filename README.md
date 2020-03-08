@@ -6,13 +6,26 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 
 # Dev Notes
 
-- [ ] Instead of `getAttribute` in `CreateHole` use `getBoundingClientRect()` because elements will not always have x, y, width, height
-
+- [Did not work] Instead of `getAttribute` in `CreateHole` use `getBoundingClientRect()` because elements will not always have x, y, width, height
 - [x] Make holes winnable
-
 - [x] Transition between holes on win. Different scenes would be ideal
+- [x] Make first three holes
 
-- [ ] Make first three holes
+- [x] Design HoleFour water
+- [ ] Design HoleFive sand
+- [ ] Sound
+    - [ ] Add basic ball hit sound effect
+    - [ ] Add ball in hole sound (clapping, ball in cup)
+    - [ ] Add wall hit sound
+- [ ] UI: Show hole name
+- [ ] UI: Show par
+- [ ] UI: Level select
+- [ ] Created by / About area
+- [ ] Settings
+    - [ ] Music on/off
+    - [ ] Sound effects on/off
+
+- [ ] Water behavior: ball should slow in water (just like in sand). If ball stops in water, it returns to the mat
 
 # Creating a Hole
 
@@ -26,3 +39,7 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 8. Add any new features to `CreateHole` class
 9. Add special elements inside `HoleNumber` class after call to `CreateHole`
 10. `Play-test` the hole
+
+# Complex sand and Water shapes
+
+Large spatially distinct sand regions are needed for physics, but small sand clumps are needed for rendering graphics. 

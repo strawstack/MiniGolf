@@ -1,0 +1,15 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="1200" fill="#E5E5E5"/>
+<rect class="background" width="1200" height="1200" fill="#C4C4C4"/>
+<rect class="wall" x="101" y="213" width="997" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="103" y="976" width="997" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="51" y="263" width="50" height="713" fill="#C4C4C4"/>
+<rect class="wall" x="1098" y="264" width="50" height="713" fill="#C4C4C4"/>
+<rect class="course" x="101" y="263" width="997" height="714" fill="#C4C4C4"/>
+<rect class="wedge-tl" x="103" y="263" width="150" height="150" fill="#C4C4C4"/>
+<rect class="wedge" x="948" y="263" width="150" height="150" fill="#C4C4C4"/>
+<rect class="mat" x="207" y="797" width="70" height="70" fill="#C4C4C4"/>
+<rect class="ball" x="230" y="820" width="24" height="24" fill="#C4C4C4"/>
+<rect class="hole" x="936" y="819" width="40" height="40" fill="#C4C4C4"/>
+<path class="water" d="M822.82 537.128C796.952 448.996 687.82 476.128 599.82 458.128C511.82 440.128 482.82 504.26 387.688 537.128C292.556 569.996 282.82 671.128 299.82 758.128C380.82 907.128 321.415 912.723 384.82 976.128H815.82C879.226 912.723 899.82 847.796 899.82 758.128C899.82 668.46 848.688 625.26 822.82 537.128Z" fill="#8DBCD6" fill-opacity="0.5"/>
+</svg>

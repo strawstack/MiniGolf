@@ -1,26 +1,29 @@
-class HoleTwo extends Phaser.Scene {
-    constructor ()
+class HoleThree extends Phaser.Scene {
+    constructor()
     {
         // Set scene `key`
-        super('HoleTwo');
+        super('HoleThree');
     }
+
     init()
     {
 
     }
-    preload ()
+    preload()
     {
 
     }
-    create ()
+    create()
     {
+        // Matter world bounds
+        //this.matter.world.setBounds(0, 0, game.config.width, game.config.height);
 
         let hole = new CreateHole(
             this,
-            new CreateSVG(data.holeTwo).data,
+            new CreateSVG(data.holeThree).data,
             () => {
-                alert("HoleTwo Complete!")
-                this.scene.start("HoleThree");
+                alert("HoleThree Complete!")
+                this.scene.start("HoleFour");
             }
         );
 

@@ -1,5 +1,5 @@
 class CreateHole {
-    constructor(scene, svg, onComplete) {
+    constructor(scene, svg, onComplete, sandCallback) {
         this.scene = scene;
 
         // Course
@@ -75,34 +75,6 @@ class CreateHole {
             isSensor: true // trigger events but don't react
         });
 
-        // Ball
-        let ballElem = svg.querySelector(".ball");
-        let ball = {
-            x: parseInt(ballElem.getAttribute("x")),
-            y: parseInt(ballElem.getAttribute("y")),
-            radius: parseInt(ballElem.getAttribute("width"))/2
-        };
-
-        let ballGraphics = this.scene.add.graphics({
-            x: mat.x + mat.width/2,
-            y: mat.y + mat.height/2});
-
-        ballGraphics.fillStyle(0xFFFFFF);
-        ballGraphics.fillCircle(
-            0,
-            0,
-            ball.radius
-        );
-
-        // Ball Matter physics
-        this.scene.matter.add.gameObject(ballGraphics, {
-            shape: {
-                type: 'circle',
-                radius: ball.radius
-            },
-            label: 'ball'
-        });
-
         // Walls
         let walls = svg.querySelectorAll(".wall");
         for (let wall of walls) {
@@ -161,12 +133,295 @@ class CreateHole {
                 wedge.y + oy,
             );
 
+            // Draw wedge graphics according to Matter verticies
+            let px = wedgeGraphics.body.position.x;
+            let py = wedgeGraphics.body.position.y;
             wedgeGraphics.fillStyle(0xA87E60);
-            wedgeGraphics.moveTo(0 - ox, 0 - oy);
-            wedgeGraphics.lineTo(wedge.width - ox, 0 - oy);
-            wedgeGraphics.lineTo(wedge.width - ox, wedge.height - oy);
+            wedgeGraphics.moveTo(wedgeGraphics.body.vertices[0].x - px, wedgeGraphics.body.vertices[0].y - py);
+            for (let i=1; i < wedgeGraphics.body.vertices.length; i++) {
+                let v = wedgeGraphics.body.vertices[i];
+                wedgeGraphics.lineTo(v.x - px, v.y - py);
+            }
             wedgeGraphics.closePath();
             wedgeGraphics.fillPath();
+        }
+
+        // Wedge-tl (top-left corner)
+        let wedgeElems_tl = svg.querySelectorAll(".wedge-tl");
+        for (let wedgeElem of wedgeElems_tl) {
+            let wedge = {
+                x: parseInt(wedgeElem.getAttribute("x")),
+                y: parseInt(wedgeElem.getAttribute("y")),
+                width: parseInt(wedgeElem.getAttribute("width")),
+                height: parseInt(wedgeElem.getAttribute("height"))
+            };
+
+            let wedgeGraphics = this.scene.add.graphics({
+                x: wedge.x,
+                y: wedge.y
+            });
+
+            // Wedge Matter physics
+            let b1 = this.scene.matter.add.gameObject(wedgeGraphics, {
+                shape: {
+                    type: 'fromVertices',
+                    verts: [
+                        {x: 0, y: 0},
+                        {x: wedge.width, y: 0},
+                        {x: 0, y: wedge.height}
+                    ]
+                },
+                label: 'wedge',
+                isStatic: true,
+                restitution: 1
+            });
+
+            let ox = b1.body.centerOffset.x;
+            let oy = b1.body.centerOffset.y;
+
+            wedgeGraphics.setPosition(
+                wedge.x + ox,
+                wedge.y + oy,
+            );
+
+            // Draw wedge graphics according to Matter verticies
+            let px = wedgeGraphics.body.position.x;
+            let py = wedgeGraphics.body.position.y;
+            wedgeGraphics.fillStyle(0xA87E60);
+            wedgeGraphics.moveTo(wedgeGraphics.body.vertices[0].x - px, wedgeGraphics.body.vertices[0].y - py);
+            for (let i=1; i < wedgeGraphics.body.vertices.length; i++) {
+                let v = wedgeGraphics.body.vertices[i];
+                wedgeGraphics.lineTo(v.x - px, v.y - py);
+            }
+            wedgeGraphics.closePath();
+            wedgeGraphics.fillPath();
+        }
+
+        // Wedge-bl (bottom-left corner)
+        let wedgeElems_bl = svg.querySelectorAll(".wedge-bl");
+        for (let wedgeElem of wedgeElems_bl) {
+            let wedge = {
+                x: parseInt(wedgeElem.getAttribute("x")),
+                y: parseInt(wedgeElem.getAttribute("y")),
+                width: parseInt(wedgeElem.getAttribute("width")),
+                height: parseInt(wedgeElem.getAttribute("height"))
+            };
+
+            let wedgeGraphics = this.scene.add.graphics({
+                x: wedge.x,
+                y: wedge.y
+            });
+
+            // Wedge Matter physics
+            let b1 = this.scene.matter.add.gameObject(wedgeGraphics, {
+                shape: {
+                    type: 'fromVertices',
+                    verts: [
+                        {x: 0, y: 0},
+                        {x: 0, y: wedge.height},
+                        {x: wedge.width, y: wedge.height}
+                    ]
+                },
+                label: 'wedge',
+                isStatic: true,
+                restitution: 1
+            });
+
+            let ox = b1.body.centerOffset.x;
+            let oy = b1.body.centerOffset.y;
+
+            wedgeGraphics.setPosition(
+                wedge.x + ox,
+                wedge.y + oy,
+            );
+
+            // Draw wedge graphics according to Matter verticies
+            let px = wedgeGraphics.body.position.x;
+            let py = wedgeGraphics.body.position.y;
+            wedgeGraphics.fillStyle(0xA87E60);
+            wedgeGraphics.moveTo(wedgeGraphics.body.vertices[0].x - px, wedgeGraphics.body.vertices[0].y - py);
+            for (let i=1; i < wedgeGraphics.body.vertices.length; i++) {
+                let v = wedgeGraphics.body.vertices[i];
+                wedgeGraphics.lineTo(v.x - px, v.y - py);
+            }
+            wedgeGraphics.closePath();
+            wedgeGraphics.fillPath();
+        }
+
+        // Rock
+        let rockElems = svg.querySelectorAll(".rock");
+        for (let rockElem of rockElems) {
+            let rock = {
+                x: parseInt(rockElem.getAttribute("x")),
+                y: parseInt(rockElem.getAttribute("y")),
+                width: parseInt(rockElem.getAttribute("width")),
+                height: parseInt(rockElem.getAttribute("height"))
+            };
+
+            let rockGraphics = this.scene.add.graphics({
+                x: rock.x,
+                y: rock.y
+            });
+
+            // Rock Matter physics
+            let r1 = this.scene.matter.add.gameObject(rockGraphics, {
+                shape: {
+                    type: 'polygon',
+                    radius: rock.width/2,
+                    sides: 6
+                },
+                label: 'rock',
+                isStatic: true,
+                restitution: 1
+            });
+
+            let ox = r1.body.centerOffset.x;
+            let oy = r1.body.centerOffset.y;
+
+            rockGraphics.setPosition(
+                rock.x + ox/2,
+                rock.y + oy/2,
+            );
+
+            // Draw rock graphics according to Matter verticies
+            let px = rockGraphics.body.position.x;
+            let py = rockGraphics.body.position.y;
+            rockGraphics.fillStyle(0xB5B5B5);
+            rockGraphics.moveTo(rockGraphics.body.vertices[0].x - px, rockGraphics.body.vertices[0].y - py);
+            for (let i=1; i < rockGraphics.body.vertices.length; i++) {
+                let v = rockGraphics.body.vertices[i];
+                rockGraphics.lineTo(v.x - px, v.y - py);
+            }
+            rockGraphics.closePath();
+            rockGraphics.fillPath();
+
+            // Rotate rock 90deg
+            rockGraphics.setRotation(0.5 * Math.PI);
+        }
+
+        // Sand
+        let sandElems = svg.querySelectorAll(".sand");
+        let sandBodies = [];
+        for (let sandElem of sandElems) {
+
+            let sandGraphics = this.scene.add.graphics({
+                x: 0,
+                y: 0
+            });
+
+            // Get vertices from path
+            // NOTE: For smooth shapes, a lower number of samples works better
+            let vert = this.scene.matter.svg.pathToVertices(sandElem, 25);
+
+            // Create object from Verticies
+            let s1 = this.scene.matter.add.gameObject(sandGraphics, {
+                shape: {
+                    type: 'fromVertices',
+                    verts: vert
+                },
+                label: 'sand',
+                isStatic: true,
+                isSensor: true
+            });
+
+            // Collect sand bodies for collision checking
+            sandBodies.push(sandGraphics.body);
+
+            let ox = s1.body.centerOffset.x;
+            let oy = s1.body.centerOffset.y;
+
+            sandGraphics.setPosition(
+                0 + ox,
+                0 + oy,
+            );
+
+            // Draw water graphics according to Matter verticies
+            let px = sandGraphics.body.position.x;
+            let py = sandGraphics.body.position.y;
+            sandGraphics.fillStyle(0xD9D7A2);
+            sandGraphics.moveTo(sandGraphics.body.vertices[0].x - px, sandGraphics.body.vertices[0].y - py);
+            for (let i=1; i < sandGraphics.body.vertices.length; i++) {
+                let v = sandGraphics.body.vertices[i];
+                sandGraphics.lineTo(v.x - px, v.y - py);
+            }
+            sandGraphics.closePath();
+            sandGraphics.fillPath();
+            sandGraphics.setAlpha(0.95);
+        }
+
+        // Ball
+        let ballElem = svg.querySelector(".ball");
+        let ball = {
+            x: parseInt(ballElem.getAttribute("x")),
+            y: parseInt(ballElem.getAttribute("y")),
+            radius: parseInt(ballElem.getAttribute("width"))/2
+        };
+
+        let ballGraphics = this.scene.add.graphics({
+            x: mat.x + mat.width/2,
+            y: mat.y + mat.height/2});
+
+        ballGraphics.fillStyle(0xFFFFFF);
+        ballGraphics.fillCircle(
+            0,
+            0,
+            ball.radius
+        );
+
+        // Ball Matter physics
+        this.scene.matter.add.gameObject(ballGraphics, {
+            shape: {
+                type: 'circle',
+                radius: ball.radius
+            },
+            label: 'ball'
+        });
+
+        // Water
+        let waterElems = svg.querySelectorAll(".water");
+        for (let waterElem of waterElems) {
+
+            let waterGraphics = this.scene.add.graphics({
+                x: 0,
+                y: 0
+            });
+
+            // Get vertices from path
+            // NOTE: For smooth shapes, a lower number of samples works better
+            let vert = this.scene.matter.svg.pathToVertices(waterElem, 25);
+
+            // Create object from Verticies
+            let w1 = this.scene.matter.add.gameObject(waterGraphics, {
+                shape: {
+                    type: 'fromVertices',
+                    verts: vert
+                },
+                label: 'water',
+                isStatic: true,
+                isSensor: true
+            });
+
+            let ox = w1.body.centerOffset.x;
+            let oy = w1.body.centerOffset.y;
+
+            waterGraphics.setPosition(
+                0 + ox,
+                0 + oy,
+            );
+
+            // Draw water graphics according to Matter verticies
+            let px = waterGraphics.body.position.x;
+            let py = waterGraphics.body.position.y;
+            waterGraphics.fillStyle(0x8DBCD6);
+            waterGraphics.moveTo(waterGraphics.body.vertices[0].x - px, waterGraphics.body.vertices[0].y - py);
+            for (let i=1; i < waterGraphics.body.vertices.length; i++) {
+                let v = waterGraphics.body.vertices[i];
+                waterGraphics.lineTo(v.x - px, v.y - py);
+            }
+            waterGraphics.closePath();
+            waterGraphics.fillPath();
+
+            waterGraphics.setAlpha(0.5);
         }
 
         // TODO - Remove. Used for testing physics
@@ -199,26 +454,65 @@ class CreateHole {
         }, this);
 
         // Ball physics properties
-        ballGraphics.setFriction(0.01);
-        ballGraphics.setFrictionAir(0.01);
+        ballGraphics.setFriction(0.02);
+        ballGraphics.setFrictionAir(0.02);
         ballGraphics.setBounce(0.8);
         ballGraphics.setDensity(0.04);
+
+        let sand_count = 0;
 
         // Collisions
         this.scene.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
             let _ball = undefined;
-            let _hole = undefined;
             if (bodyA.label == "ball") { _ball = bodyA; }
             if (bodyB.label == "ball") { _ball = bodyB; }
+
+            let _hole = undefined;
             if (bodyA.label == "hole") { _hole = bodyA; }
             if (bodyB.label == "hole") { _hole = bodyB; }
+
+            let _water = undefined;
+            if (bodyA.label == "water") { _water = bodyA; }
+            if (bodyB.label == "water") { _water = bodyB; }
+
             if (_ball != undefined && _hole != undefined) {
                 ballGraphics.setPosition(
                     hole.x + hole.radius,
                     hole.y + hole.radius);
                 ballGraphics.setVelocity(0, 0);
                 setTimeout(onComplete, 100);
+
+            } else if (_ball != undefined && _water != undefined) { // Water collision
+                /*
+                ballGraphics.setPosition(
+                    mat.x + mat.width/2,
+                    mat.y + mat.height/2);
+                ballGraphics.setVelocity(0, 0); */
+
             }
         });
+
+        // Build sandCallback
+        if (sandCallback != undefined) {
+            sandCallback.func = () => {
+                let res = this.scene.matter.query.point(
+                    sandBodies,
+                    ballGraphics.body.position
+                );
+                if (res.length > 0) {
+                     // Ball is in sand and will slow
+                    if (ballGraphics.body.friction != 0.08) {
+                        ballGraphics.setFriction(0.08);
+                        ballGraphics.setFrictionAir(0.08);                        
+                    }
+                } else {
+                    // Ball not in sand
+                    if (ballGraphics.body.friction != 0.02) {
+                        ballGraphics.setFriction(0.02);
+                        ballGraphics.setFrictionAir(0.02);
+                    }
+                }
+            };
+        }
     }
 }
