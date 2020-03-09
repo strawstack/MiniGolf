@@ -10,17 +10,25 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Make holes winnable
 - [x] Transition between holes on win. Different scenes would be ideal
 - [x] Make first three holes
-
 - [x] Design HoleFour water
 - [x] Design HoleFive sand
-
-- [ ] Make water similar to how sand works with the added constraint that if the ball stops in water the ball will return to the start.
-    - [ ] Water behavior: ball should slow in water (just like in sand). If ball stops in water, it returns to the mat
+- [x] Make water similar to how sand works with the added constraint that if the ball stops in water the ball will return to the start.
+- [x] Water behavior: ball should slow in water (just like in sand). If ball stops in water, it returns to the mat
+- [x] Sand should be contained by course and corner wedges
 
 - [ ] Sound
-    - [ ] Add basic ball hit sound effect
-    - [ ] Add ball in hole sound (clapping, ball in cup)
-    - [ ] Add wall hit sound
+    - [ ] Putt
+    - [ ] Ball-in-hole
+    - [ ] Applause
+    - [ ] Wall hit
+    - [ ] Rock hit
+    - [ ] Sand noise (on enter)
+    - [ ] Sand noise 2 (on stop)
+    - [ ] Grass noise (on exit sand/water)
+    - [ ] Water splash (on enter)
+    - [ ] Water bubble (on ball return)
+    - [ ] Wedge hit
+
 - [ ] UI: Show hole name
 - [ ] UI: Show par
 - [ ] UI: Level select
@@ -28,8 +36,6 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [ ] Settings
     - [ ] Music on/off
     - [ ] Sound effects on/off
-
-- [ ] Sand should be contained by course and corner wedges
 
 # Creating a Hole
 
@@ -51,3 +57,10 @@ If water/sand is a complex/concave shape, the graphic will not line up properly.
 # Sand (water) collisions
 
 Every frame a function is fired that checks if the ball is in sand. If the ball is in sand the friction is adjusted accordingly.
+
+# Credits
+
+## Sounds
+https://opengameart.org/
+https://freesound.org/
+https://www.bensound.com/

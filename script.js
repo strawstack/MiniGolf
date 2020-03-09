@@ -9,13 +9,13 @@ var config = {
             gravity: {x: 0, y: 0},
             debug: {
                 showBody: false,
-                showStaticBody: false 
+                showStaticBody: false
             }
         }
     },
     scene: [
-        new HoleFive(config), new HoleOne(config), new HoleTwo(config), new HoleThree(config),
-        new HoleFour(config)
+        new HoleOne(config), new HoleTwo(config), new HoleThree(config),
+        new HoleFour(config), new HoleFive(config)
     ]
 };
 

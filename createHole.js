@@ -89,6 +89,7 @@ class CreateHole {
             this.scene.matter.add.rectangle(
                 d.x + d.width/2, d.y + d.height/2, d.width, d.height,
                 {
+                    "label": "wall",
                     "isStatic": true,
                     "restitution": 1
                 }
@@ -451,10 +452,14 @@ class CreateHole {
                 mag = 1;
             }
 
+            // Sound
+            this.scene.sound.play('putt');
+
             ballGraphics.applyForce({
                 x: nx * mag,
                 y: ny * mag
             });
+
         }, this);
 
         // Ball physics properties
@@ -475,17 +480,34 @@ class CreateHole {
             if (bodyA.label == "hole") { _hole = bodyA; }
             if (bodyB.label == "hole") { _hole = bodyB; }
 
-            let _water = undefined;
-            if (bodyA.label == "water") { _water = bodyA; }
-            if (bodyB.label == "water") { _water = bodyB; }
+            let _wall = undefined;
+            if (bodyA.label == "wall") { _wall = bodyA; }
+            if (bodyB.label == "wall") { _wall = bodyB; }
+
+            let _rock = undefined;
+            if (bodyA.label == "rock") { _rock = bodyA; }
+            if (bodyB.label == "rock") { _rock = bodyB; }
+
+            let _wedge = undefined;
+            if (bodyA.label == "wedge") { _wedge = bodyA; }
+            if (bodyB.label == "wedge") { _wedge = bodyB; }
 
             if (_ball != undefined && _hole != undefined) {
+                this.scene.sound.play('complete');
                 ballGraphics.setPosition(
                     hole.x + hole.radius,
                     hole.y + hole.radius);
                 ballGraphics.setVelocity(0, 0);
                 setTimeout(onComplete, 100);
 
+            } else if (_ball != undefined && _wall != undefined) {
+                this.scene.sound.play('wall');
+
+            } else if (_ball != undefined && _rock != undefined) {
+                this.scene.sound.play('rock');
+
+            }else if (_ball != undefined && _wedge != undefined) {
+                this.scene.sound.play('wedge');
             }
         });
 
@@ -512,7 +534,6 @@ class CreateHole {
                 );
                 if (res.length > 0) {
                     inWater = true; // Ball is in water and will slow
-
                 } else {
                     inWater = false; // Ball not in water
                 }
@@ -521,6 +542,11 @@ class CreateHole {
                     if (ballGraphics.body.friction != 0.08) {
                         ballGraphics.setFriction(0.08);
                         ballGraphics.setFrictionAir(0.08);
+                        if (inWater) {
+                            this.scene.sound.play('water-enter');
+                        } else if (inSand) {
+                            this.scene.sound.play('sand-enter');
+                        }
                     }
                 } else {
                     if (ballGraphics.body.friction != 0.02) {
@@ -533,6 +559,7 @@ class CreateHole {
                 let isStopped = this.stopped(ballGraphics.body.velocity);
                 console.log(inWater, isStopped);
                 if (inWater && isStopped) {
+                    this.scene.sound.play('water-stop');
                     ballGraphics.setPosition(
                         mat.x + mat.width/2,
                         mat.y + mat.height/2);
