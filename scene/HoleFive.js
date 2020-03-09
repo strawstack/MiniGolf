@@ -3,9 +3,7 @@ class HoleFive extends Phaser.Scene {
     {
         // Set scene `key`
         super('HoleFive');
-        this.sandCallback = {
-            'func': () => {}
-        };
+        this.sandCallback = {'func': () => {}};
     }
 
     init()

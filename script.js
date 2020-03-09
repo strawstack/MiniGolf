@@ -8,8 +8,8 @@ var config = {
         matter: {
             gravity: {x: 0, y: 0},
             debug: {
-                showBody: true,
-                showStaticBody: true
+                showBody: false,
+                showStaticBody: false 
             }
         }
     },

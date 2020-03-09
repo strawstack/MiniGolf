@@ -1,5 +1,5 @@
 class CreateHole {
-    constructor(scene, svg, onComplete, sandCallback) {
+    constructor(scene, svg, onComplete, updateCallback) {
         this.scene = scene;
 
         // Course
@@ -311,7 +311,7 @@ class CreateHole {
 
             // Get vertices from path
             // NOTE: For smooth shapes, a lower number of samples works better
-            let vert = this.scene.matter.svg.pathToVertices(sandElem, 25);
+            let vert = this.scene.matter.svg.pathToVertices(sandElem, 5);
 
             // Create object from Verticies
             let s1 = this.scene.matter.add.gameObject(sandGraphics, {
@@ -379,6 +379,7 @@ class CreateHole {
 
         // Water
         let waterElems = svg.querySelectorAll(".water");
+        let waterBodies = [];
         for (let waterElem of waterElems) {
 
             let waterGraphics = this.scene.add.graphics({
@@ -400,6 +401,9 @@ class CreateHole {
                 isStatic: true,
                 isSensor: true
             });
+
+            // Collect waterBodies
+            waterBodies.push(waterGraphics.body);
 
             let ox = w1.body.centerOffset.x;
             let oy = w1.body.centerOffset.y;
@@ -482,37 +486,65 @@ class CreateHole {
                 ballGraphics.setVelocity(0, 0);
                 setTimeout(onComplete, 100);
 
-            } else if (_ball != undefined && _water != undefined) { // Water collision
-                /*
-                ballGraphics.setPosition(
-                    mat.x + mat.width/2,
-                    mat.y + mat.height/2);
-                ballGraphics.setVelocity(0, 0); */
-
             }
         });
 
-        // Build sandCallback
-        if (sandCallback != undefined) {
-            sandCallback.func = () => {
+        // Build updateCallback
+        let inWater = false;
+        let inSand  = false;
+        if (updateCallback != undefined) {
+            updateCallback.func = () => {
+                // Sand
                 let res = this.scene.matter.query.point(
                     sandBodies,
                     ballGraphics.body.position
                 );
                 if (res.length > 0) {
-                     // Ball is in sand and will slow
+                    inSand = true; // Ball is in sand and will slow
+                } else {
+                    inSand = false; // Ball not in sand
+                }
+
+                // Water
+                res = this.scene.matter.query.point(
+                    waterBodies,
+                    ballGraphics.body.position
+                );
+                if (res.length > 0) {
+                    inWater = true; // Ball is in water and will slow
+
+                } else {
+                    inWater = false; // Ball not in water
+                }
+
+                if (inWater || inSand) {
                     if (ballGraphics.body.friction != 0.08) {
                         ballGraphics.setFriction(0.08);
-                        ballGraphics.setFrictionAir(0.08);                        
+                        ballGraphics.setFrictionAir(0.08);
                     }
                 } else {
-                    // Ball not in sand
                     if (ballGraphics.body.friction != 0.02) {
                         ballGraphics.setFriction(0.02);
                         ballGraphics.setFrictionAir(0.02);
                     }
                 }
+
+                // If ball stops in water, place it back at the start
+                let isStopped = this.stopped(ballGraphics.body.velocity);
+                console.log(inWater, isStopped);
+                if (inWater && isStopped) {
+                    ballGraphics.setPosition(
+                        mat.x + mat.width/2,
+                        mat.y + mat.height/2);
+                    ballGraphics.setVelocity(0, 0);
+                }
             };
         }
+    }
+    stopped(vec2) {
+        let minVal = 0.011;
+        let x = Math.abs(vec2.x) < minVal;
+        let y = Math.abs(vec2.y) < minVal;
+        return x && y;
     }
 }

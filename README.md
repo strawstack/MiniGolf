@@ -12,7 +12,11 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Make first three holes
 
 - [x] Design HoleFour water
-- [ ] Design HoleFive sand
+- [x] Design HoleFive sand
+
+- [ ] Make water similar to how sand works with the added constraint that if the ball stops in water the ball will return to the start.
+    - [ ] Water behavior: ball should slow in water (just like in sand). If ball stops in water, it returns to the mat
+
 - [ ] Sound
     - [ ] Add basic ball hit sound effect
     - [ ] Add ball in hole sound (clapping, ball in cup)
@@ -25,7 +29,7 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
     - [ ] Music on/off
     - [ ] Sound effects on/off
 
-- [ ] Water behavior: ball should slow in water (just like in sand). If ball stops in water, it returns to the mat
+- [ ] Sand should be contained by course and corner wedges
 
 # Creating a Hole
 
@@ -42,4 +46,8 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 
 # Complex sand and Water shapes
 
-Large spatially distinct sand regions are needed for physics, but small sand clumps are needed for rendering graphics. 
+If water/sand is a complex/concave shape, the graphic will not line up properly. In this case, place several rectangles over the sand shape in Figma and cut the path in the several less complex pieces. This should result in a tighter fit between the physics body and the graphics.
+
+# Sand (water) collisions
+
+Every frame a function is fired that checks if the ball is in sand. If the ball is in sand the friction is adjusted accordingly.
