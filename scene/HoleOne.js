@@ -28,6 +28,9 @@ class HoleOne extends Phaser.Scene {
         // Matter world bounds
         //this.matter.world.setBounds(0, 0, game.config.width, game.config.height);
 
+        // Unhide Canvas on start
+        document.querySelector("canvas").style.opacity = 1;
+
         let hole = new CreateHole(
             this,
             new CreateSVG(data.holeOne).data,

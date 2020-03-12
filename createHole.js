@@ -453,7 +453,7 @@ class CreateHole {
             }
 
             // Sound
-            this.scene.sound.play('putt');
+            if (state.soundOn) this.scene.sound.play('putt');
 
             ballGraphics.applyForce({
                 x: nx * mag,
@@ -493,7 +493,7 @@ class CreateHole {
             if (bodyB.label == "wedge") { _wedge = bodyB; }
 
             if (_ball != undefined && _hole != undefined) {
-                this.scene.sound.play('complete');
+                if (state.soundOn) this.scene.sound.play('complete');
                 ballGraphics.setPosition(
                     hole.x + hole.radius,
                     hole.y + hole.radius);
@@ -501,13 +501,13 @@ class CreateHole {
                 setTimeout(onComplete, 100);
 
             } else if (_ball != undefined && _wall != undefined) {
-                this.scene.sound.play('wall');
+                if (state.soundOn) this.scene.sound.play('wall');
 
             } else if (_ball != undefined && _rock != undefined) {
-                this.scene.sound.play('rock');
+                if (state.soundOn) this.scene.sound.play('rock');
 
             }else if (_ball != undefined && _wedge != undefined) {
-                this.scene.sound.play('wedge');
+                if (state.soundOn) this.scene.sound.play('wedge');
             }
         });
 
@@ -543,9 +543,9 @@ class CreateHole {
                         ballGraphics.setFriction(0.08);
                         ballGraphics.setFrictionAir(0.08);
                         if (inWater) {
-                            this.scene.sound.play('water-enter');
+                            if (state.soundOn) this.scene.sound.play('water-enter');
                         } else if (inSand) {
-                            this.scene.sound.play('sand-enter');
+                            if (state.soundOn) this.scene.sound.play('sand-enter');
                         }
                     }
                 } else {
@@ -559,7 +559,7 @@ class CreateHole {
                 let isStopped = this.stopped(ballGraphics.body.velocity);
                 console.log(inWater, isStopped);
                 if (inWater && isStopped) {
-                    this.scene.sound.play('water-stop');
+                    if (state.soundOn) this.scene.sound.play('water-stop');
                     ballGraphics.setPosition(
                         mat.x + mat.width/2,
                         mat.y + mat.height/2);

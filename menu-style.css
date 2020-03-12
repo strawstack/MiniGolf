@@ -1,0 +1,53 @@
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr minmax(0px, 400px) 1fr;
+    height: 100%;
+    position: absolute;
+    background: #83A77D;
+    padding: 0px 30px;
+    opacity: 0;
+    pointer-events: none;
+}
+.menu-area {
+    grid-column: 2 / 3;
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+.menu-title {
+    text-align: center;
+    font-size: 3.2rem;
+    color: white;
+    user-select: none;
+}
+.menu-items {
+    list-style-type: none;
+    padding: 0px;
+    font-size: 1.5rem;
+}
+.menu-item {
+    text-align: center;
+    background: #333;
+    margin: 40px 0px;
+    padding: 20px 0px;
+    cursor: pointer;
+    color: white;
+}
+.menu-item {
+    background: #ABC8A6;
+    user-select: none;
+}
+.menu-item:nth-child(1):hover {
+    background: #8DBCD6;
+}
+.menu-item:nth-child(2):hover {
+    background: #D9D7A2;
+}
+.menu-item:nth-child(3):hover {
+    background: #B5B5B5;
+}
+.menu-item:nth-child(4):hover {
+    background: #A87E60;
+}
+.menu-item:nth-child(5):hover {
+    background: #555;
+}

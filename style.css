@@ -9,9 +9,50 @@ body {
     justify-content: center;
     align-items: center;
     background: #ABC8A6;
+    position: relative;
 }
 
 canvas {
     width: 600px;
     height: 600px;
+    opacity: 0;
+}
+
+/* Top Bar Area */
+.top-bar-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+.top-bar-btn {
+    text-align: center;
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    padding: 20px;
+    user-select: none;
+}
+.top-bar-btn.menu:hover, .top-bar-btn.sound:hover {
+    background: #83A77D;
+    cursor: pointer;
+}
+.top-bar-btn.sound {
+    text-align: right;
+    text-decoration: none;
+}
+
+/* State Info Area */
+.state-info-area {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.state-info {
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 1.5rem;
+    color: #555;
+    user-select: none;
 }

@@ -15,27 +15,27 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Make water similar to how sand works with the added constraint that if the ball stops in water the ball will return to the start.
 - [x] Water behavior: ball should slow in water (just like in sand). If ball stops in water, it returns to the mat
 - [x] Sand should be contained by course and corner wedges
-
-- [ ] Sound
-    - [ ] Putt
-    - [ ] Ball-in-hole
+- [x] Sound
+    - [x] Putt
+    - [x] Ball-in-hole
     - [ ] Applause
-    - [ ] Wall hit
-    - [ ] Rock hit
-    - [ ] Sand noise (on enter)
-    - [ ] Sand noise 2 (on stop)
-    - [ ] Grass noise (on exit sand/water)
-    - [ ] Water splash (on enter)
-    - [ ] Water bubble (on ball return)
-    - [ ] Wedge hit
+    - [x] Wall hit
+    - [x] Rock hit
+    - [x] Sand noise (on enter)
+    - [x] Sand noise 2 (on stop)
+    - [x] Grass noise (on exit sand/water)
+    - [x] Water splash (on enter)
+    - [x] Water bubble (on ball return)
+    - [x] Wedge hit
+- [x] Sound on/off functionality
 
-- [ ] UI: Show hole name
-- [ ] UI: Show par
-- [ ] UI: Level select
-- [ ] Created by / About area
-- [ ] Settings
-    - [ ] Music on/off
-    - [ ] Sound effects on/off
+- [ ] UI in top-left corner
+    - [ ] UI: Show hole number
+    - [ ] UI: Show par
+    - [ ] Show current player and score
+- [ ] Pause phaser game (or disable putting) in `toggleMenu function` when menu is shown
+
+- [ ] Carbon Ads https://www.carbonads.net/
 
 # Creating a Hole
 
@@ -60,7 +60,27 @@ Every frame a function is fired that checks if the ball is in sand. If the ball 
 
 # Credits
 
-## Sounds
+## Sounds from
 https://opengameart.org/
 https://freesound.org/
 https://www.bensound.com/
+
+## Required Attribution
+
+"Water, Pouring, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+https://freesound.org/people/InspectorJ/sounds/421184/
+
+"Water Swirl, Small, 5.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+https://freesound.org/people/InspectorJ/sounds/398711/
+
+https://opengameart.org/content/completion-sound
+
+Credit "Kenney.nl"
+https://opengameart.org/content/51-ui-sound-effects-buttons-switches-and-clicks
+
+https://opengameart.org/content/12-3-knocks-wooden-doors
+
+https://opengameart.org/content/lego-bricks
+
+Impact by Iwan 'qubodup' Gabovitch http://opengameart.org/users/qubodup
+https://opengameart.org/content/impact

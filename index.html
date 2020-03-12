@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="menu-style.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
 
     <!-- Polyfill -->
     <script src="lib/pathseg.js"></script>
@@ -30,5 +32,28 @@
     <script src="script.js"></script>
 </head>
 <body>
+    <div class="state-info-area">
+        <div class="state-info player">Player: Richard</div>
+        <div class="state-info shots">Shots: &nbsp;0</div>
+        <div class="state-info number">Hole: &nbsp;&nbsp;&nbsp;1</div>
+        <div class="state-info par">Par: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</div>    
+    </div>
+    <div class="top-bar-area">
+        <div class="top-bar-btn"></div>
+        <div class="top-bar-btn menu">Menu</div>
+        <div class="top-bar-btn sound">Sound</div>
+    </div>
+    <div class="menu-container">
+        <div class="menu-area">
+            <h1 class="menu-title">Menu</h1>
+            <ul class="menu-items">
+                <li class="menu-item return">Return to game</li>
+                <li class="menu-item start">New Game</li>
+                <li class="menu-item select">Level Select</li>
+                <li class="menu-item about">About</li>
+                <li class="menu-item settings">Settings</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

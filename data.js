@@ -1,3 +1,8 @@
+let state = {
+    showMenu: false,
+    soundOn: true
+};
+
 let data = {
     "holeOne": `<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect class="background" width="1200" height="1200" fill="#C4C4C4"/>
