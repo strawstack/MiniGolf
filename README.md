@@ -28,12 +28,16 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
     - [x] Water bubble (on ball return)
     - [x] Wedge hit
 - [x] Sound on/off functionality
+- [x] UI in top-left corner
+    - [x] UI: Show hole number
+    - [x] UI: Show par
+    - [x] Show player and score
+- [?] Pause phaser game (or disable putting) in `toggleMenu function` when menu is shown
 
-- [ ] UI in top-left corner
-    - [ ] UI: Show hole number
-    - [ ] UI: Show par
-    - [ ] Show current player and score
-- [ ] Pause phaser game (or disable putting) in `toggleMenu function` when menu is shown
+- [ ] Clicking on `New Game` should go to `HoleOne` and reset shots
+- [ ] Design `Level Select` screen as a sibling of `menu-area`
+- [ ] About page
+- [ ] Settings page
 
 - [ ] Carbon Ads https://www.carbonads.net/
 

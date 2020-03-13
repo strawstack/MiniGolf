@@ -19,7 +19,7 @@ var config = {
     ]
 };
 
-function main() {
+function main(game) {
 
     // Dom elements
     let mc = document.querySelector(".menu-container");
@@ -36,6 +36,13 @@ function main() {
     let aboutBtn = document.querySelector(".menu-item.about");
     let settingsBtn = document.querySelector(".menu-item.settings");
 
+    // Info display
+    //let playerName = document.querySelector("");
+    let holeName = document.querySelector(".state-info.hole-name>span");
+    let parNumber = document.querySelector(".state-info.par>span");
+    let strokesNumber = document.querySelector(".state-info.strokes>span");
+    let scoreNumber = document.querySelector(".state-info.score>span");
+
     let toggleMenu = () => {
         if (state.showMenu) {
             mc.style.opacity = 0;
@@ -47,6 +54,20 @@ function main() {
             state.showMenu = true;
         }
     }
+
+    state.setStrokes = (number) => {
+        state.strokes = number;
+        strokesNumber.innerHTML = number;
+        state.updateScore();
+    };
+
+    state.updateScore = () => {
+        scoreNumber.innerHTML = state.score + state.strokes;
+    };
+
+    state.setHoleName = (name) => {
+        holeName.innerHTML = name;
+    };
 
     // Click Listeners
     menuBtn.addEventListener('click', (e) => {
@@ -64,13 +85,25 @@ function main() {
             soundBtn.style.textDecoration = "none";
         }
     });
+    newGameBtn.addEventListener('click', (e) => {
+        let res = confirm("Lose all progress and restart at the first hole?");
+        if (res) {
+            // Stop all scenes
+            for (let scene of config.scene) {
+                game.scene.stop(scene.scene.key);
+            }
+            // Start the entry scene
+            game.scene.start(config.scene[0].scene.key);
 
-    // Prepare to hide Hole when menu is clicked
+            // Reset score
+            state.score = 0;
+            state.setStrokes(0);
 
-    // How to switch to other pages like settings/about/levelselect?
-
-    //
-
+            toggleMenu();
+        }
+    });
 }
-window.onload = main;
 var game = new Phaser.Game(config);
+window.onload = () => {
+    main(game);
+};

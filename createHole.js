@@ -1,6 +1,7 @@
 class CreateHole {
     constructor(scene, svg, onComplete, updateCallback) {
         this.scene = scene;
+        state.setHoleName(this.scene.scene.key);
 
         // Course
         let courseElems = svg.querySelectorAll(".course");
@@ -460,6 +461,8 @@ class CreateHole {
                 y: ny * mag
             });
 
+            state.setStrokes(state.strokes + 1);
+
         }, this);
 
         // Ball physics properties
@@ -498,7 +501,15 @@ class CreateHole {
                     hole.x + hole.radius,
                     hole.y + hole.radius);
                 ballGraphics.setVelocity(0, 0);
-                setTimeout(onComplete, 100);
+                setTimeout(() => {
+                    onComplete();
+                    state.score += state.strokes;
+                    state.setStrokes(0);
+                }, 100);
+
+                // Update Score
+                // Add strokes to score then set strokes to zero
+                state.updateScore();
 
             } else if (_ball != undefined && _wall != undefined) {
                 if (state.soundOn) this.scene.sound.play('wall');

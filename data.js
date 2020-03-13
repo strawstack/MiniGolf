@@ -1,6 +1,11 @@
 let state = {
     showMenu: false,
-    soundOn: true
+    soundOn: true,
+    strokes: 0,
+    setStrokes: () => {},
+    score: 0,
+    updateScore: () => {},
+    setHoleName: () => {}
 };
 
 let data = {

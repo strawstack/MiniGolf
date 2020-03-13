@@ -53,6 +53,6 @@ canvas {
 .state-info {
     font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 1.5rem;
-    color: #555;
+    color: white;    
     user-select: none;
 }
