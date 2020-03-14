@@ -27,27 +27,6 @@ class CreateHole {
             );
         }
 
-        // Mat
-        let matElem = svg.querySelector(".mat");
-        let mat = {
-            x: parseInt(matElem.getAttribute("x")),
-            y: parseInt(matElem.getAttribute("y")),
-            width: parseInt(matElem.getAttribute("width")),
-            height: parseInt(matElem.getAttribute("height"))
-        };
-
-        let matGraphics = this.scene.add.graphics({
-            x: mat.x,
-            y: mat.y});
-
-        matGraphics.fillStyle(0x333333, 0.3);
-        matGraphics.fillRect(
-            0,
-            0,
-            mat.width,
-            mat.height
-        );
-
         // Hole
         let holeElem = svg.querySelector(".hole");
         let hole = {
@@ -250,6 +229,57 @@ class CreateHole {
             wedgeGraphics.fillPath();
         }
 
+        // Wedge-br (bottom-left corner)
+        let wedgeElems_br = svg.querySelectorAll(".wedge-br");
+        for (let wedgeElem of wedgeElems_br) {
+            let wedge = {
+                x: parseInt(wedgeElem.getAttribute("x")),
+                y: parseInt(wedgeElem.getAttribute("y")),
+                width: parseInt(wedgeElem.getAttribute("width")),
+                height: parseInt(wedgeElem.getAttribute("height"))
+            };
+
+            let wedgeGraphics = this.scene.add.graphics({
+                x: wedge.x,
+                y: wedge.y
+            });
+
+            // Wedge Matter physics
+            let b1 = this.scene.matter.add.gameObject(wedgeGraphics, {
+                shape: {
+                    type: 'fromVertices',
+                    verts: [
+                        {x: wedge.width, y: 0},
+                        {x: wedge.width, y: wedge.height},
+                        {x: 0, y: wedge.height}
+                    ]
+                },
+                label: 'wedge',
+                isStatic: true,
+                restitution: 1
+            });
+
+            let ox = b1.body.centerOffset.x;
+            let oy = b1.body.centerOffset.y;
+
+            wedgeGraphics.setPosition(
+                wedge.x + ox,
+                wedge.y + oy,
+            );
+
+            // Draw wedge graphics according to Matter verticies
+            let px = wedgeGraphics.body.position.x;
+            let py = wedgeGraphics.body.position.y;
+            wedgeGraphics.fillStyle(0xA87E60);
+            wedgeGraphics.moveTo(wedgeGraphics.body.vertices[0].x - px, wedgeGraphics.body.vertices[0].y - py);
+            for (let i=1; i < wedgeGraphics.body.vertices.length; i++) {
+                let v = wedgeGraphics.body.vertices[i];
+                wedgeGraphics.lineTo(v.x - px, v.y - py);
+            }
+            wedgeGraphics.closePath();
+            wedgeGraphics.fillPath();
+        }
+
         // Rock
         let rockElems = svg.querySelectorAll(".rock");
         for (let rockElem of rockElems) {
@@ -337,7 +367,7 @@ class CreateHole {
                 0 + oy,
             );
 
-            // Draw water graphics according to Matter verticies
+            // Draw sand graphics according to Matter verticies
             let px = sandGraphics.body.position.x;
             let py = sandGraphics.body.position.y;
             sandGraphics.fillStyle(0xD9D7A2);
@@ -350,6 +380,27 @@ class CreateHole {
             sandGraphics.fillPath();
             sandGraphics.setAlpha(0.95);
         }
+
+        // Mat
+        let matElem = svg.querySelector(".mat");
+        let mat = {
+            x: parseInt(matElem.getAttribute("x")),
+            y: parseInt(matElem.getAttribute("y")),
+            width: parseInt(matElem.getAttribute("width")),
+            height: parseInt(matElem.getAttribute("height"))
+        };
+
+        let matGraphics = this.scene.add.graphics({
+            x: mat.x,
+            y: mat.y});
+
+        matGraphics.fillStyle(0x333333, 0.3);
+        matGraphics.fillRect(
+            0,
+            0,
+            mat.width,
+            mat.height
+        );
 
         // Ball
         let ballElem = svg.querySelector(".ball");
@@ -503,13 +554,8 @@ class CreateHole {
                 ballGraphics.setVelocity(0, 0);
                 setTimeout(() => {
                     onComplete();
-                    state.score += state.strokes;
                     state.setStrokes(0);
                 }, 100);
-
-                // Update Score
-                // Add strokes to score then set strokes to zero
-                state.updateScore();
 
             } else if (_ball != undefined && _wall != undefined) {
                 if (state.soundOn) this.scene.sound.play('wall');
@@ -568,7 +614,6 @@ class CreateHole {
 
                 // If ball stops in water, place it back at the start
                 let isStopped = this.stopped(ballGraphics.body.velocity);
-                console.log(inWater, isStopped);
                 if (inWater && isStopped) {
                     if (state.soundOn) this.scene.sound.play('water-stop');
                     ballGraphics.setPosition(

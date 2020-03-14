@@ -33,13 +33,39 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
     - [x] UI: Show par
     - [x] Show player and score
 - [?] Pause phaser game (or disable putting) in `toggleMenu function` when menu is shown
+- [x] Clicking on `New Game` should go to `HoleOne` and reset shots
 
-- [ ] Clicking on `New Game` should go to `HoleOne` and reset shots
+- [ ] Change wedge color to rock color
+- [ ] Design and implement another 13-holes (I think there are five now)
 - [ ] Design `Level Select` screen as a sibling of `menu-area`
+- [ ] Par for each hole should be what I can do it in
+    - [ ] One star if you get par / none if you are higher than par
+    - [ ] `Notice` animates in from top at end of each level
+    - [ ] `Notice` offers: level select, retry, next hole
+
 - [ ] About page
 - [ ] Settings page
+- [ ] Make a special hole that unlocks only when the player has a star for every hole
 
 - [ ] Carbon Ads https://www.carbonads.net/
+
+# 12-Hole Game
+- 3: Regular (rocks + wedges)
+    - [x] First hole `HoleOne`
+    - [x] Wedges `HoleTwo`
+    - [x] Rocks (and Wedges) `HoleThree`
+- 3: Sand
+    - [x] Sand `HoleFive`
+    - [D] Wedges and sand `HoleEight`
+    - [D] Rocks, Wedges and sand `HoleNine`
+- 3: Water
+    - [D] Water `HoleTen`
+    - [x] Water, sand, and rocks `HoleSix`
+    - [x] Wedges and water `HoleFour`
+- 3: Sand and Water
+    - [D] Sand and water (short-cut across water vs longer sand option) `HoleEleven`
+    - [x] Sand, water, rocks and wedges `HoleSeven`
+    - [ ] Sand, water, rocks, wedges, and across course bounds (bonus hole, if 11 stars)
 
 # Creating a Hole
 

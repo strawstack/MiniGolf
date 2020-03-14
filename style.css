@@ -16,6 +16,7 @@ canvas {
     width: 600px;
     height: 600px;
     opacity: 0;
+    border: 1px dashed white;
 }
 
 /* Top Bar Area */
@@ -53,6 +54,6 @@ canvas {
 .state-info {
     font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 1.5rem;
-    color: white;    
+    color: white;
     user-select: none;
 }

@@ -14,8 +14,18 @@ var config = {
         }
     },
     scene: [
-        new HoleOne(config), new HoleTwo(config), new HoleThree(config),
-        new HoleFour(config), new HoleFive(config)
+        new HoleZero(config),
+        new HoleOne(config),
+        new HoleTwo(config),
+        new HoleThree(config),
+        new HoleFour(config),
+        new HoleFive(config),
+        new HoleSix(config),
+        new HoleSeven(config),
+        new HoleEight(config),
+        new HoleNine(config),
+        new HoleTen(config),
+        new HoleEleven(config)
     ]
 };
 
@@ -41,7 +51,6 @@ function main(game) {
     let holeName = document.querySelector(".state-info.hole-name>span");
     let parNumber = document.querySelector(".state-info.par>span");
     let strokesNumber = document.querySelector(".state-info.strokes>span");
-    let scoreNumber = document.querySelector(".state-info.score>span");
 
     let toggleMenu = () => {
         if (state.showMenu) {
@@ -58,11 +67,6 @@ function main(game) {
     state.setStrokes = (number) => {
         state.strokes = number;
         strokesNumber.innerHTML = number;
-        state.updateScore();
-    };
-
-    state.updateScore = () => {
-        scoreNumber.innerHTML = state.score + state.strokes;
     };
 
     state.setHoleName = (name) => {
@@ -95,8 +99,7 @@ function main(game) {
             // Start the entry scene
             game.scene.start(config.scene[0].scene.key);
 
-            // Reset score
-            state.score = 0;
+            // Reset strokes
             state.setStrokes(0);
 
             toggleMenu();

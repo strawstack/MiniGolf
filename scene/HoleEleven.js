@@ -1,9 +1,9 @@
-class HoleFive extends Phaser.Scene {
+class HoleEleven extends Phaser.Scene {
     constructor()
     {
         // Set scene `key`
-        super('HoleFive');
-        this.sandCallback = {'func': () => {}};
+        super('HoleEleven');
+        this.updateCallback = {'func': () => {}};
     }
 
     init()
@@ -21,12 +21,12 @@ class HoleFive extends Phaser.Scene {
 
         let hole = new CreateHole(
             this,
-            new CreateSVG(data.holeFive).data,
+            new CreateSVG(data.holeEleven).data,
             () => {
-                alert("HoleFive Complete!")
-                this.scene.start("HoleSix");
+                alert("HoleEleven Complete!")
+                this.scene.start("HoleOne");
             },
-            this.sandCallback
+            this.updateCallback
         );
 
         // Resize Canvas (to increase resolution)
@@ -37,6 +37,6 @@ class HoleFive extends Phaser.Scene {
     }
     update(time, delta)
     {
-        this.sandCallback.func();
+        this.updateCallback.func();
     }
 }
