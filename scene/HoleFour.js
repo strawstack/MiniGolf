@@ -3,7 +3,7 @@ class HoleFour extends Phaser.Scene {
     {
         // Set scene `key`
         super('HoleFour');
-        this.waterCallback = {'func': () => {}};
+        this.sandCallback = {'func': () => {}};
     }
 
     init()
@@ -26,7 +26,7 @@ class HoleFour extends Phaser.Scene {
                 alert("HoleFour Complete!")
                 this.scene.start("HoleFive");
             },
-            this.waterCallback
+            this.sandCallback
         );
 
         // Resize Canvas (to increase resolution)
@@ -37,6 +37,6 @@ class HoleFour extends Phaser.Scene {
     }
     update(time, delta)
     {
-        this.waterCallback.func();
+        this.sandCallback.func();
     }
 }

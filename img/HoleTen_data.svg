@@ -1,0 +1,20 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="1200" fill="#E5E5E5"/>
+<path class="water" d="M323.5 538.5C245.5 518 116 539 116 539V620H413V904H561H831.5C831.5 904 865.856 787.335 860.5 711.5C855.557 641.509 869.537 578.657 812 538.5C767.292 507.297 734.5 499 673 525.5C611.5 552 577.459 535.706 516 538.5C440.902 541.914 401.5 559 323.5 538.5Z" fill="#8DBCD6" fill-opacity="0.5"/>
+<path class="water" d="M1085 412H892.228C886.216 410.351 879.966 409.111 873.444 407.818C864.504 406.045 855.051 404.171 845 401C786.791 382.638 749.037 378.852 693.566 373.29C686.37 372.569 678.876 371.817 671 371C651.421 368.969 633.794 371.629 617.106 374.148C589.7 378.285 564.826 382.039 538 364C524.701 355.057 508 336 508 336H1085V412Z" fill="#8DBCD6" fill-opacity="0.5"/>
+<path class="water" d="M1085 412H892.228C905.531 415.65 917.667 421.307 929 434C944.491 451.349 943.818 469.872 943.097 489.69C942.562 504.397 942.001 519.817 948 536C961.436 572.244 998 620 998 620H1085V412Z" fill="#8DBCD6" fill-opacity="0.5"/>
+<rect class="ball" x="220" y="463" width="24" height="24" fill="#C4C4C4"/>
+<rect class="mat" x="197" y="440" width="70" height="70" fill="#C4C4C4"/>
+<rect class="hole" x="907" y="769" width="40" height="40" fill="#C4C4C4"/>
+<rect class="course" x="116" y="336" width="969" height="284" fill="#C4C4C4"/>
+<rect class="course" x="413" y="620" width="585" height="284" fill="#C4C4C4"/>
+<rect class="background" width="1200" height="1200" fill="#C4C4C4"/>
+<rect class="wall" x="66" y="336" width="50" height="284" fill="#C4C4C4"/>
+<rect class="wall" x="1085" y="336" width="50" height="284" fill="#C4C4C4"/>
+<rect class="wall" x="998" y="620" width="50" height="284" fill="#C4C4C4"/>
+<rect class="wall" x="363" y="620" width="50" height="284" fill="#C4C4C4"/>
+<rect class="wall" x="116" y="286" width="969" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="116" y="620" width="247" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="1048" y="620" width="37" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="413" y="904" width="585" height="50" fill="#C4C4C4"/>
+</svg>

@@ -34,18 +34,17 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
     - [x] Show player and score
 - [?] Pause phaser game (or disable putting) in `toggleMenu function` when menu is shown
 - [x] Clicking on `New Game` should go to `HoleOne` and reset shots
+- [x] Design and implement another 13-holes (I think there are five now)
+- [?] Change wedge color to rock color
 
-- [ ] Change wedge color to rock color
-- [ ] Design and implement another 13-holes (I think there are five now)
 - [ ] Design `Level Select` screen as a sibling of `menu-area`
 - [ ] Par for each hole should be what I can do it in
     - [ ] One star if you get par / none if you are higher than par
     - [ ] `Notice` animates in from top at end of each level
     - [ ] `Notice` offers: level select, retry, next hole
-
 - [ ] About page
 - [ ] Settings page
-- [ ] Make a special hole that unlocks only when the player has a star for every hole
+- [ ] Make hole-12, only unlocks only when the player has 11-star; one for every hole
 
 - [ ] Carbon Ads https://www.carbonads.net/
 
