@@ -485,6 +485,10 @@ class CreateHole {
         // Replace with better putting mechanic
         this.scene.input.on("pointerup", function(pointer) {
 
+            // Only putt when ball stationary and menu closed
+            if (state.ballInMotion || state.showMenu) return;
+            state.ballInMotion = true;
+
             // Ball position
             let bx = ballGraphics.body.position.x + ball.radius;
             let by = ballGraphics.body.position.y + ball.radius;
@@ -523,6 +527,17 @@ class CreateHole {
         ballGraphics.setDensity(0.04);
 
         let sand_count = 0;
+
+        // Detect ball motion
+        let game_canvas = document.querySelector("canvas");
+        this.scene._ballMotion = () => {
+            if (this.stopped(ballGraphics.body.velocity)) {
+                state.ballInMotion = false;
+                game_canvas.style.cursor = "default";
+            } else {
+                game_canvas.style.cursor = "wait";
+            }
+        }
 
         // Collisions
         this.scene.matter.world.on('collisionstart', function (event, bodyA, bodyB) {

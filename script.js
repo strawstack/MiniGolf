@@ -61,6 +61,24 @@ function main(game) {
     let bannerLevelSelect = document.querySelector(".btn-item.level-select");
     let nextLevel = document.querySelector(".btn-item.next-level");
 
+    // Global reset button
+    let globalHoleReset = document.querySelector(".reset-button");
+
+    globalHoleReset.addEventListener("click", e => {
+        // Stop all scenes
+        for (let scene of config.scene) {
+            game.scene.stop(scene.scene.key);
+        }
+
+        state.setStrokes(0);
+
+        // Start the entry scene
+        game.scene.start(config.scene[state.currentHole].scene.key);
+
+        let banner = document.querySelector(".success-banner");
+        state.showBanner(banner, false);
+    });
+
     let toggleLevelSelect = (newState) => {
         if (newState === undefined) newState = !state.showLevelSelect;
         if (!newState) {
@@ -101,6 +119,7 @@ function main(game) {
         state.showBanner(banner, false);
     });
     bannerLevelSelect.addEventListener("click", e => {
+        determineStars();
         toggleMenu();
         toggleLevelSelect(true);
     });

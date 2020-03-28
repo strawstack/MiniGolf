@@ -46,18 +46,20 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
     - [x] `Notice` offers: level select, retry, next hole
 - [x] Banner buttons should work
     - [x] Connect banner to all holes
+- [x] Banner level select button should work
+- [x] Level select or new game when banner shows should hide banner
+- [x] `Reset current hole` button on screen at all times
+- [x] Prevent putt when ball in `motion`
+- [x] Prevent putt when `menu is open`
+- [x] Indicate ball is in motion somehow and when player can putt
+    - [no] Ghost ball at cursor?
+    - [no] Line from ball to cursor?
+    - [x] Mouse becomes `wait` when ball in motion
 
-- [ ] Banner level select button should work
-- [ ] Level select or new game when banner shows should hide banner
-
-- [ ] `Reset current hole` button on screen at all times
-
-- [ ] Prevent putt when menu is open
-- [ ] Prevent putt when ball in motion
+- [ ] Make hole-12, only unlocks only when the player has 11-star; one for every hole
 
 - [ ] About page
 - [ ] Settings page
-- [ ] Make hole-12, only unlocks only when the player has 11-star; one for every hole
 
 - [ ] Carbon Ads https://www.carbonads.net/
 

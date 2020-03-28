@@ -5,6 +5,7 @@ class HoleSeven extends Phaser.Scene {
         super('HoleSeven');
         this.waterCallback = {'func': () => {}};
         this._holeNumber = 7;
+        this._ballMotion = () => {};
     }
 
     init()
@@ -45,5 +46,6 @@ class HoleSeven extends Phaser.Scene {
     update(time, delta)
     {
         this.waterCallback.func();
+        this._ballMotion();        
     }
 }

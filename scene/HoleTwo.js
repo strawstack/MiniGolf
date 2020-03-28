@@ -4,6 +4,7 @@ class HoleTwo extends Phaser.Scene {
         // Set scene `key`
         super('HoleTwo');
         this._holeNumber = 2;
+        this._ballMotion = () => {};
     }
     init()
     {
@@ -39,6 +40,6 @@ class HoleTwo extends Phaser.Scene {
     }
     update(time, delta)
     {
-
+        this._ballMotion();
     }
 }

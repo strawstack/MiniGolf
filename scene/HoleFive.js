@@ -5,6 +5,7 @@ class HoleFive extends Phaser.Scene {
         super('HoleFive');
         this.updateCallback = {'func': () => {}};
         this._holeNumber = 5;
+        this._ballMotion = () => {};
     }
 
     init()
@@ -45,5 +46,6 @@ class HoleFive extends Phaser.Scene {
     update(time, delta)
     {
         this.updateCallback.func();
+        this._ballMotion();        
     }
 }
