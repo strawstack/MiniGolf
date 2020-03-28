@@ -1,0 +1,59 @@
+.success-banner-container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.success-banner {
+    pointer-events: all;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 15px;
+    height: 250px;
+    width: 400px;
+    background: #83a77d;
+    color: white;
+    border-radius: 12px;
+    position: absolute;
+    top: -280px;
+    opacity: 0;
+    transition: top 1s, opacity 0.6s;
+    border: 6px solid white;
+}
+.success-banner>.title-message {
+    font-size: 3.2rem;
+    text-align: center;
+}
+.success-banner>.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.success-banner>.button-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.button-area>.btn-item {
+    border: 3px solid white;
+    border-radius: 12px;
+    padding: 10px;
+    transition: background 0.2s;
+}
+.button-area>.btn-item:hover {
+    cursor: pointer;
+    background: #abc9a6;
+}
+.button-area .btn-icon {
+    text-align: center;
+}
+.button-area .btn-text {
+
+}

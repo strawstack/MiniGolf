@@ -55,6 +55,12 @@ function main(game) {
     let parNumber = document.querySelector(".state-info.par>span");
     let strokesNumber = document.querySelector(".state-info.strokes>span");
 
+    // Banner Buttons
+    let banner = document.querySelector(".success-banner");
+    let replay = document.querySelector(".btn-item.reset");
+    let bannerLevelSelect = document.querySelector(".btn-item.level-select");
+    let nextLevel = document.querySelector(".btn-item.next-level");
+
     let toggleLevelSelect = (newState) => {
         if (newState === undefined) newState = !state.showLevelSelect;
         if (!newState) {
@@ -83,13 +89,46 @@ function main(game) {
         }
     }
 
+    replay.addEventListener("click", e => {
+        // Stop all scenes
+        for (let scene of config.scene) {
+            game.scene.stop(scene.scene.key);
+        }
+        // Start the entry scene
+        game.scene.start(config.scene[state.currentHole].scene.key);
+
+        // Hide the banner
+        state.showBanner(banner, false);
+    });
+    bannerLevelSelect.addEventListener("click", e => {
+        toggleMenu();
+        toggleLevelSelect(true);
+    });
+    nextLevel.addEventListener("click", e => {
+        // Stop all scenes
+        for (let scene of config.scene) {
+            game.scene.stop(scene.scene.key);
+        }
+
+        let nextHole = state.currentHole + 1;
+        if (nextHole == 12) nextHole = 1;
+
+        // Hide the banner
+        state.showBanner(banner, false);
+
+        // Start the entry scene
+        game.scene.start(config.scene[nextHole].scene.key);
+    });
+
     state.setStrokes = (number) => {
         state.strokes = number;
         strokesNumber.innerHTML = number;
     };
 
-    state.setHoleName = (name) => {
-        holeName.innerHTML = name;
+    state.setHoleName = (name, holeNumber) => {
+        let cookies = document.cookie;
+        let star = (cookies[holeNumber-1] == "1")? " ⭐": "";
+        holeName.innerHTML = name + star;
     };
 
     // Click Listeners
@@ -109,7 +148,7 @@ function main(game) {
         }
     });
     newGameBtn.addEventListener('click', (e) => {
-        let res = confirm("Lose all progress and restart at the first hole?");
+        let res = confirm("Restart at the first hole? (star progress is not deleted)");
         if (res) {
             // Stop all scenes
             for (let scene of config.scene) {
@@ -122,6 +161,9 @@ function main(game) {
             state.setStrokes(0);
 
             toggleMenu();
+
+            // Hide the banner
+            state.showBanner(banner, false);
         }
     });
 
@@ -150,11 +192,17 @@ function main(game) {
 
     levelSelectList.forEach(_e => {
         _e.addEventListener("click", e => {
+
+            // Hide the banner
+            state.showBanner(banner, false);
+
             let holeNumber = parseInt(e.target.dataset.hole);
+
             // Stop all scenes
             for (let scene of config.scene) {
                 game.scene.stop(scene.scene.key);
             }
+
             game.scene.start(config.scene[holeNumber].scene.key);
             toggleLevelSelect(false);
             toggleMenu();

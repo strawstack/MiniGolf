@@ -15,6 +15,7 @@ class HoleEight extends Phaser.Scene {
     {
         let parNumber = document.querySelector(".state-info.par>span");
         parNumber.innerHTML = state.par[this._holeNumber];
+        state.currentHole = this._holeNumber;
     }
     create()
     {
@@ -25,9 +26,12 @@ class HoleEight extends Phaser.Scene {
             this,
             new CreateSVG(data.holeEight).data,
             () => {
-                alert("HoleEight Complete!");
+                //alert("HoleEight Complete!");
                 let result = state.awardStar(state, this._holeNumber);
-                this.scene.start("HoleNine");
+                let banner = document.querySelector(".success-banner");
+                state.setBanner(banner, "HoleEight", result);
+                state.showBanner(banner, true);
+                //this.scene.start("HoleNine");
             },
             this.updateCallback
         );

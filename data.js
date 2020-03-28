@@ -1,5 +1,6 @@
 let state = {
     showMenu: false,
+    currentHole: 0,
     soundOn: true,
     strokes: 0,
     setStrokes: () => {},
@@ -18,6 +19,27 @@ let state = {
             return true;
         }
         return false;
+    },
+    setBanner: (banner, holeName, result) => {
+        banner.querySelector(".title-message>span").innerHTML = holeName;
+        if (result) {
+            banner.querySelector(".message").innerHTML = "You got a ⭐!";
+        } else {
+            banner.querySelector(".message").innerHTML = "Nice work!";
+        }
+    },
+    showBanner: (banner, show) => {
+        if (show) {
+            banner.style.position = "relative";
+            banner.style.top = "0px";
+            banner.style.opacity = 1;
+        } else {
+            banner.style.top = "-260px";
+            banner.style.opacity = 0;
+            setTimeout(() => {
+                banner.style.position = "absolute";
+            }, 1000);
+        }
     }
 };
 

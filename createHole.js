@@ -1,7 +1,7 @@
 class CreateHole {
     constructor(scene, svg, onComplete, updateCallback) {
         this.scene = scene;
-        state.setHoleName(this.scene.scene.key);
+        state.setHoleName(this.scene.scene.key, this.scene._holeNumber);
 
         // Course
         let courseElems = svg.querySelectorAll(".course");

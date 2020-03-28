@@ -41,19 +41,19 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Hide star until player has beaten the level
 - [x] Par for each hole should be what I can do it in
     - [x] One star if you get par / none if you are higher than par
+- [x] Show star next to hole name if achieved
+- [x] `Notice` animates in from top at end of each level
+    - [x] `Notice` offers: level select, retry, next hole
+- [x] Banner buttons should work
+    - [x] Connect banner to all holes
 
-- [ ] `Notice` animates in from top at end of each level
-- [ ] `Notice` offers: level select, retry, next hole
-- [ ] Reset current hole button on screen at all times
+- [ ] Banner level select button should work
+- [ ] Level select or new game when banner shows should hide banner
 
-- [ ] Prevent level navigation until level is unlocked
-    - [ ] Level unlocks when previous is played at least once
+- [ ] `Reset current hole` button on screen at all times
 
 - [ ] Prevent putt when menu is open
 - [ ] Prevent putt when ball in motion
-
-
-
 
 - [ ] About page
 - [ ] Settings page
