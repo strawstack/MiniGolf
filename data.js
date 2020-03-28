@@ -5,7 +5,20 @@ let state = {
     setStrokes: () => {},
     score: 0,
     updateScore: () => {},
-    setHoleName: () => {}
+    setHoleName: () => {},
+    showLevelSelect: false,
+    par: [0, 1, 2, 1, 2, 2, 2, 3, 2, 3, 3, 2, 0],
+    awardStar: (_state, holeNumber) => {
+        let cookies = document.cookie;
+        if (_state.strokes <= _state.par[holeNumber]) {
+            cookies = cookies.split("");
+            cookies[holeNumber-1] = "1";
+            cookies = cookies.join("");
+            document.cookie = cookies;
+            return true;
+        }
+        return false;
+    }
 };
 
 let data = {

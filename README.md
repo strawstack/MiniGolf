@@ -36,12 +36,25 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Clicking on `New Game` should go to `HoleOne` and reset shots
 - [x] Design and implement another 13-holes (I think there are five now)
 - [?] Change wedge color to rock color
+- [x] Design `Level Select` screen as a sibling of `menu-area`
+- [x] Clicking a hole in level-select should navigate to that level
+- [x] Hide star until player has beaten the level
+- [x] Par for each hole should be what I can do it in
+    - [x] One star if you get par / none if you are higher than par
 
-- [ ] Design `Level Select` screen as a sibling of `menu-area`
-- [ ] Par for each hole should be what I can do it in
-    - [ ] One star if you get par / none if you are higher than par
-    - [ ] `Notice` animates in from top at end of each level
-    - [ ] `Notice` offers: level select, retry, next hole
+- [ ] `Notice` animates in from top at end of each level
+- [ ] `Notice` offers: level select, retry, next hole
+- [ ] Reset current hole button on screen at all times
+
+- [ ] Prevent level navigation until level is unlocked
+    - [ ] Level unlocks when previous is played at least once
+
+- [ ] Prevent putt when menu is open
+- [ ] Prevent putt when ball in motion
+
+
+
+
 - [ ] About page
 - [ ] Settings page
 - [ ] Make hole-12, only unlocks only when the player has 11-star; one for every hole

@@ -4,6 +4,7 @@ class HoleTen extends Phaser.Scene {
         // Set scene `key`
         super('HoleTen');
         this.updateCallback = {'func': () => {}};
+        this._holeNumber = 10;
     }
 
     init()
@@ -12,7 +13,8 @@ class HoleTen extends Phaser.Scene {
     }
     preload()
     {
-
+        let parNumber = document.querySelector(".state-info.par>span");
+        parNumber.innerHTML = state.par[this._holeNumber];
     }
     create()
     {
@@ -23,7 +25,8 @@ class HoleTen extends Phaser.Scene {
             this,
             new CreateSVG(data.holeTen).data,
             () => {
-                alert("HoleTen Complete!")
+                alert("HoleTen Complete!");
+                let result = state.awardStar(state, this._holeNumber);
                 this.scene.start("HoleEleven");
             },
             this.updateCallback

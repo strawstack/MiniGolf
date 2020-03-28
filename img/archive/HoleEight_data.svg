@@ -1,0 +1,23 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="1200" fill="#E5E5E5"/>
+<path class="sand" d="M621 575.5C567 631.5 465 619 465 619V728C465 728 568 676 621 690.5C674 705 749 676 749 676V546C749 546 675 519.5 621 575.5Z" fill="#D9D7A2"/>
+<path class="sand" d="M1180 703H1043C1043 703 926 753 986 798C1046 843 1037 987 1037 987H1180V703Z" fill="#D9D7A2"/>
+<rect class="ball" x="141" y="391" width="24" height="24" fill="#C4C4C4"/>
+<rect class="mat" x="118" y="368" width="70" height="70" fill="#C4C4C4"/>
+<rect class="course" x="34" y="261" width="715" height="284" fill="#C4C4C4"/>
+<rect class="course" x="465" y="545" width="284" height="158" fill="#C4C4C4"/>
+<rect class="hole" x="918" y="825" width="40" height="40" fill="#C4C4C4"/>
+<rect class="course" x="465" y="703" width="715" height="284" fill="#C4C4C4"/>
+<rect class="rock" x="500" y="486" width="80" height="69" fill="#C4C4C4"/>
+<rect class="wedge-bl" x="465" y="837" width="150" height="150" fill="#C4C4C4"/>
+<rect class="wedge" x="600" y="261" width="150" height="150" fill="#C4C4C4"/>
+<rect class="background" width="1200" height="1200" fill="#C4C4C4"/>
+<rect class="wall" x="34" y="211" width="715" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="35" y="545" width="430" height="50" fill="#C4C4C4"/>
+<rect class="wall" y="261" width="34" height="284" fill="#C4C4C4"/>
+<rect class="wall" x="750" y="261" width="50" height="392" fill="#C4C4C4"/>
+<rect class="wall" x="415" y="595" width="50" height="392" fill="#C4C4C4"/>
+<rect class="wall" x="1180" y="703" width="20" height="284" fill="#C4C4C4"/>
+<rect class="wall" x="465" y="987" width="715" height="50" fill="#C4C4C4"/>
+<rect class="wall" x="750" y="653" width="430" height="50" fill="#C4C4C4"/>
+</svg>

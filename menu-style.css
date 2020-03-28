@@ -26,13 +26,10 @@
 }
 .menu-item {
     text-align: center;
-    background: #333;
     margin: 40px 0px;
     padding: 20px 0px;
     cursor: pointer;
     color: white;
-}
-.menu-item {
     background: #ABC8A6;
     user-select: none;
 }

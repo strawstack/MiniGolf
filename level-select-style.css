@@ -1,0 +1,150 @@
+.level-select-area {
+    grid-column: 2 / 3;
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 1.5rem;
+}
+.level-select-title {
+    text-align: center;
+    font-size: 3.2rem;
+    color: white;
+    user-select: none;
+}
+.level-select-btn {
+    text-align: center;
+    margin: 40px 0px;
+    padding: 20px 0px;
+    cursor: pointer;
+    color: white;
+    background: #ABC8A6;
+    user-select: none;
+}
+.level-select-btn.return:hover {
+    background: #D9D7A2;
+}
+
+/* level-select-items-area */
+.level-select-items-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 100px);
+    grid-gap: 10px;
+}
+.level-select-item {
+    /* should be image with hold name and star in-front */
+    position: relative;
+    background: #a4caa2;
+}
+.level-select-item:hover {
+    border: 3px solid white;
+}
+.level-select-item.level-img {
+
+}
+.level-select-item.level-name {
+
+}
+.level-select-item.level-star {
+
+}
+
+/* level select item */
+.level-select-item>.hole-img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    pointer-events: none;
+}
+.level-select-item>.name {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    color: #79a978;
+    pointer-events: none;
+    user-select: none;
+    padding: 5px 0px 0px 10px;
+}
+.level-select-item>.star {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;    
+}
+
+/* level select images */
+.level-select-item:nth-child(1)>.hole-img {
+    background: url("img/holes/1.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(2)>.hole-img {
+    background: url("img/holes/2.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(3)>.hole-img {
+    background: url("img/holes/3.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(4)>.hole-img {
+    background: url("img/holes/4.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(5)>.hole-img {
+    background: url("img/holes/5.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(6)>.hole-img {
+    background: url("img/holes/6.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(7)>.hole-img {
+    background: url("img/holes/7.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(8)>.hole-img {
+    background: url("img/holes/8.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(9)>.hole-img {
+    background: url("img/holes/9.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(10)>.hole-img {
+    background: url("img/holes/10.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.level-select-item:nth-child(11)>.hole-img {
+    background: url("img/holes/11.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

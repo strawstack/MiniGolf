@@ -33,6 +33,9 @@ function main(game) {
 
     // Dom elements
     let mc = document.querySelector(".menu-container");
+    let ma = document.querySelector(".menu-area");
+    let ls = document.querySelector(".level-select-area");
+    let levelSelectList = document.querySelectorAll(".level-select-item");
     let canvas = document.querySelector("canvas");
 
     // In-game buttons
@@ -52,11 +55,27 @@ function main(game) {
     let parNumber = document.querySelector(".state-info.par>span");
     let strokesNumber = document.querySelector(".state-info.strokes>span");
 
+    let toggleLevelSelect = (newState) => {
+        if (newState === undefined) newState = !state.showLevelSelect;
+        if (!newState) {
+            ls.style.opacity = 0;
+            ls.style.pointerEvents = "none";
+            state.showLevelSelect = false;
+            ma.style.display = "inline-block";
+        } else {
+            ls.style.opacity = 1;
+            ls.style.pointerEvents = "all";
+            state.showLevelSelect = true;
+            ma.style.display = "none";
+        }
+    };
+
     let toggleMenu = () => {
         if (state.showMenu) {
             mc.style.opacity = 0;
             mc.style.pointerEvents = "none";
             state.showMenu = false;
+            toggleLevelSelect(false);
         } else {
             mc.style.opacity = 1;
             mc.style.pointerEvents = "all";
@@ -105,6 +124,43 @@ function main(game) {
             toggleMenu();
         }
     });
+
+    let determineStars = () => {
+        if (document.cookie === "") document.cookie = "000000000000";
+        let cookies = document.cookie;
+        let stars = document.querySelectorAll(".star-img");
+        for (let i = 0; i < cookies.length; i++) {
+            if (cookies[i] == "1") {
+                stars[i].src = "star.svg";
+            } else {
+                stars[i].src = "star_empty.svg";
+            }
+        }
+    };
+    determineStars();
+
+    let menuReturnBtn = document.querySelector(".level-select-btn.return");
+    levelSelectBtn.addEventListener('click', (e) => {
+        determineStars();
+        toggleLevelSelect(true);
+    });
+    menuReturnBtn.addEventListener('click', (e) => {
+        toggleLevelSelect(false);
+    });
+
+    levelSelectList.forEach(_e => {
+        _e.addEventListener("click", e => {
+            let holeNumber = parseInt(e.target.dataset.hole);
+            // Stop all scenes
+            for (let scene of config.scene) {
+                game.scene.stop(scene.scene.key);
+            }
+            game.scene.start(config.scene[holeNumber].scene.key);
+            toggleLevelSelect(false);
+            toggleMenu();
+        });
+    });
+
 }
 var game = new Phaser.Game(config);
 window.onload = () => {
