@@ -25,7 +25,8 @@ var config = {
         new HoleEight(config),
         new HoleNine(config),
         new HoleTen(config),
-        new HoleEleven(config)
+        new HoleEleven(config),
+        new HoleTwelve(config)
     ]
 };
 
@@ -130,7 +131,7 @@ function main(game) {
         }
 
         let nextHole = state.currentHole + 1;
-        if (nextHole == 12) nextHole = 1;
+        if (nextHole > 12) nextHole = 1;
 
         // Hide the banner
         state.showBanner(banner, false);

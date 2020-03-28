@@ -8,7 +8,7 @@ let state = {
     updateScore: () => {},
     setHoleName: () => {},
     showLevelSelect: false,
-    par: [0, 1, 2, 1, 2, 2, 2, 3, 2, 3, 3, 2, 0],
+    par: [0, 1, 2, 1, 2, 2, 2, 3, 2, 3, 3, 2, 6],
     ballInMotion: false,
     awardStar: (_state, holeNumber) => {
         let cookies = document.cookie;
@@ -300,4 +300,47 @@ let data = {
     <rect class="wall" x="468" y="991" width="50" height="149" fill="#C4C4C4"/>
     <rect class="wall" x="718" y="991" width="50" height="149" fill="#C4C4C4"/>
     </svg>`,
+    "holeTwelve": `<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="1200" fill="#E5E5E5"/>
+    <rect class="mat" x="752" y="217" width="70" height="70" fill="#C4C4C4"/>
+    <rect class="ball" x="775" y="240" width="24" height="24" fill="#C4C4C4"/>
+    <rect class="rock" x="304" y="898" width="80" height="69" fill="#C4C4C4"/>
+    <rect class="rock" x="531" y="941" width="80" height="69" fill="#C4C4C4"/>
+    <rect class="rock" x="465" y="566" width="80" height="69" fill="#C4C4C4"/>
+    <rect class="rock" x="560" y="373" width="80" height="69" fill="#C4C4C4"/>
+    <rect class="rock" x="321" y="572" width="80" height="69" fill="#C4C4C4"/>
+    <rect class="hole" x="324" y="485" width="40" height="40" fill="#C4C4C4"/>
+    <rect class="background" width="1200" height="1200" fill="#C4C4C4"/>
+    <rect class="wedge-br" x="779" y="500" width="150" height="150" fill="#C4C4C4"/>
+    <rect class="wedge-bl" x="214" y="933" width="150" height="150" fill="#C4C4C4"/>
+    <rect class="wedge-tl" x="215" y="366" width="150" height="150" fill="#C4C4C4"/>
+    <rect class="course" x="640" y="134" width="289" height="518" fill="#C4C4C4"/>
+    <rect class="course" x="214" y="366" width="426" height="284" fill="#C4C4C4"/>
+    <rect class="course" x="336" y="650" width="129" height="150" fill="#C4C4C4"/>
+    <rect class="course" x="214" y="800" width="715" height="283" fill="#C4C4C4"/>
+    <rect class="wall" x="645" y="84" width="284" height="50" fill="#C4C4C4"/>
+    <rect class="wall" x="214" y="316" width="431" height="50" fill="#C4C4C4"/>
+    <rect class="wall" x="929" y="134" width="50" height="516" fill="#C4C4C4"/>
+    <rect class="wall" x="595" y="134" width="50" height="182" fill="#C4C4C4"/>
+    <rect class="wall" x="212" y="366" width="3" height="286" fill="#C4C4C4"/>
+    <rect class="wall" x="929" y="869" width="5" height="214" fill="#C4C4C4"/>
+    <rect class="wall" x="653" y="650" width="276" height="5" fill="#C4C4C4"/>
+    <rect class="wall" x="465" y="650" width="50" height="5" fill="#C4C4C4"/>
+    <rect class="wall" x="465" y="655" width="5" height="144" fill="#C4C4C4"/>
+    <rect class="wall" x="470" y="794" width="249" height="5" fill="#C4C4C4"/>
+    <rect class="wall" x="304" y="648" width="32" height="2" fill="#C4C4C4"/>
+    <rect class="wall" x="334" y="650" width="2" height="149" fill="#C4C4C4"/>
+    <rect class="wall" x="214" y="799" width="122" height="3" fill="#C4C4C4"/>
+    <rect class="wall" x="214" y="802" width="2" height="142" fill="#C4C4C4"/>
+    <rect class="wall" x="553" y="1083" width="376" height="2" fill="#C4C4C4"/>
+    <path class="water" d="M646 366.243L550.5 366.243C544.005 374.555 415.231 441.836 363 540C317.289 625.912 343.159 746.245 389 728.5C420 716.5 444.141 667.161 460.5 649.33C476.859 631.5 631.122 551.293 723.561 516.098C828.105 476.295 646 366.243 646 366.243Z" fill="#8DBCD6" fill-opacity="0.5"/>
+    <path class="sand" d="M750.441 740.217C686.244 733.736 733.202 874.548 777.441 903.217C835.332 940.733 1057.8 811.793 968.98 790.717C909.98 776.717 903.98 755.717 750.441 740.217Z" fill="#D9D7A2"/>
+    <path class="sand" d="M392.421 1035.28C328.224 1028.8 386.742 1138.39 430.98 1167.06C488.872 1204.58 667.803 1126.14 578.98 1105.06C519.98 1091.06 545.961 1050.78 392.421 1035.28Z" fill="#D9D7A2"/>
+    <path class="sand" d="M485 678C519 648.742 558 633 627 593C696 553 656.747 645.588 632 690C590.93 763.706 451 707.258 485 678Z" fill="#D9D7A2"/>
+    <path class="sand" d="M221.51 676.5C208.51 653.5 201.284 646.793 270.284 606.793C339.284 566.793 300.031 659.38 275.284 703.793C234.215 777.499 234.51 699.5 221.51 676.5Z" fill="#D9D7A2"/>
+    <rect class="wall" x="1195" y="1" width="4" height="1198" fill="#C4C4C4"/>
+    <rect class="wall" x="1" y="1" width="4" height="1198" fill="#C4C4C4"/>
+    <rect class="wall" x="5" y="1195" width="1190" height="4" fill="#C4C4C4"/>
+    <rect class="wall" x="5" y="1" width="1190" height="4" fill="#C4C4C4"/>
+    </svg>`
 };
