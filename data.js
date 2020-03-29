@@ -13,13 +13,14 @@ let state = {
     par: [0, 1, 2, 1, 2, 2, 2, 3, 2, 3, 3, 2, 6],
     bonusLocked: true,
     ballInMotion: false,
-    awardStar: (_state, holeNumber) => {
+    awardStar: (_state, holeNumber, holeName) => {
         let cookies = document.cookie;
         if (_state.strokes <= _state.par[holeNumber]) {
             cookies = cookies.split("");
             cookies[holeNumber-1] = "1";
             cookies = cookies.join("");
             document.cookie = cookies;
+            state.setHoleName(holeName, holeNumber);
             return true;
         }
         return false;

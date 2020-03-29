@@ -27,7 +27,7 @@ class HoleTwelve extends Phaser.Scene {
             this,
             new CreateSVG(data.holeTwelve).data,
             () => {
-                let result = state.awardStar(state, this._holeNumber);
+                let result = state.awardStar(state, this._holeNumber, this.scene.key);
                 let banner = document.querySelector(".success-banner");
                 state.setBanner(banner, "HoleTwelve", result);
                 state.showBanner(banner, true);

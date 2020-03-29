@@ -170,6 +170,7 @@ function main(game) {
 
         // Hide the banner
         state.showBanner(banner, false);
+        state.setStrokes(0);
     });
     bannerLevelSelect.addEventListener("click", e => {
         determineStars();
@@ -187,6 +188,7 @@ function main(game) {
 
         // Hide the banner
         state.showBanner(banner, false);
+        state.setStrokes(0);
 
         // Start the entry scene
         game.scene.start(config.scene[nextHole].scene.key);

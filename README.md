@@ -18,7 +18,7 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Sound
     - [x] Putt
     - [x] Ball-in-hole
-    - [ ] Applause
+    - [no] Applause
     - [x] Wall hit
     - [x] Rock hit
     - [x] Sand noise (on enter)
@@ -62,6 +62,7 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Settings page
 
 - [ ] Play test and log bugs
+- [ ] Make game trailer
 
 - [ ] Carbon Ads https://www.carbonads.net/
 

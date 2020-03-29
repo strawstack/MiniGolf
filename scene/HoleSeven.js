@@ -28,7 +28,7 @@ class HoleSeven extends Phaser.Scene {
             new CreateSVG(data.holeSeven).data,
             () => {
                 //alert("HoleSeven Complete!");
-                let result = state.awardStar(state, this._holeNumber);
+                let result = state.awardStar(state, this._holeNumber, this.scene.key);
                 let banner = document.querySelector(".success-banner");
                 state.setBanner(banner, "HoleSeven", result);
                 state.showBanner(banner, true);
@@ -46,6 +46,6 @@ class HoleSeven extends Phaser.Scene {
     update(time, delta)
     {
         this.waterCallback.func();
-        this._ballMotion();        
+        this._ballMotion();
     }
 }
