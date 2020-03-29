@@ -56,9 +56,10 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
     - [no] Line from ball to cursor?
     - [x] Mouse becomes `wait` when ball in motion
 - [x] Make hole-12
+- [x] Lock hole-12
+    - [x] Unlock when player reaches 11-star
 
-- [ ] Lock hole-12
-    - [ ] Unlock when player reaches 11-star
+- [ ] Play test and log bugs
 
 - [ ] About page
 - [ ] Settings page

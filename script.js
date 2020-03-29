@@ -187,15 +187,32 @@ function main(game) {
         }
     });
 
+    let holeTwelveLevel = document.querySelector(".level-select-item.bonus-hole");
+    let holeTwleveImg = document.querySelector(".hole-img-locked");
+
     let determineStars = () => {
         if (document.cookie === "") document.cookie = "000000000000";
         let cookies = document.cookie;
         let stars = document.querySelectorAll(".star-img");
+        let star_count = 0;
         for (let i = 0; i < cookies.length; i++) {
-            if (cookies[i] == "1") {
-                stars[i].src = "star.svg";
-            } else {
-                stars[i].src = "star_empty.svg";
+            if ((i == 11) && star_count == 11) { // 12th hole
+                if (cookies[i] == "1") {
+                    stars[i].src = "star.svg";
+                } else {
+                    stars[i].src = "star_empty.svg";
+                }
+                holeTwleveImg.className = "hole-img hole-img-locked unlock";
+                holeTwelveLevel.className = "level-select-item bonus-hole";
+                state.bonusLocked = false;
+
+            } else if (i != 11) { // not 12th hole
+                if (cookies[i] == "1") {
+                    stars[i].src = "star.svg";
+                    star_count += 1;
+                } else {
+                    stars[i].src = "star_empty.svg";
+                }
             }
         }
     };
@@ -212,6 +229,10 @@ function main(game) {
 
     levelSelectList.forEach(_e => {
         _e.addEventListener("click", e => {
+
+            if (e.target.dataset.hole == "12" && state.bonusLocked) {
+                return; // block click if hole 12 is locked
+            }
 
             // Hide the banner
             state.showBanner(banner, false);

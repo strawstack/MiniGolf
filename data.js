@@ -9,6 +9,7 @@ let state = {
     setHoleName: () => {},
     showLevelSelect: false,
     par: [0, 1, 2, 1, 2, 2, 2, 3, 2, 3, 3, 2, 6],
+    bonusLocked: true,
     ballInMotion: false,
     awardStar: (_state, holeNumber) => {
         let cookies = document.cookie;

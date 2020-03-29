@@ -36,9 +36,13 @@
     /* should be image with hold name and star in-front */
     position: relative;
     background: #a4caa2;
+    user-select: none;
 }
 .level-select-item:hover {
     border: 3px solid white;
+}
+.level-select-item.bonus-hole.lock:hover {
+    border: none;
 }
 .level-select-item.level-img {
 
@@ -87,6 +91,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    pointer-events: none;
 }
 .level-select-item:nth-child(2)>.hole-img {
     background: url("img/holes/2.png");
@@ -148,7 +153,13 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-.level-select-item:nth-child(12)>.hole-img {
+.hole-img-locked.lock {
+    background: url("img/holes/lock.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.hole-img-locked.unlock {
     background: url("img/holes/12.png");
     background-position: center;
     background-size: contain;
