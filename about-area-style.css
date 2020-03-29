@@ -1,0 +1,33 @@
+.about-area {
+    grid-column: 2 / 3;
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.5rem;
+}
+.about-area-title {
+    text-align: center;
+    font-size: 3.2rem;
+    color: white;
+    user-select: none;
+}
+.about-area-return {
+    text-align: center;
+    margin: 40px 0px;
+    padding: 20px 0px;
+    cursor: pointer;
+    color: white;
+    background: #ABC8A6;
+    user-select: none;
+}
+.about-area-return:hover {
+    background: #D9D7A2;
+}
+.about-text {
+    color: white;
+}
+.about-text>a {
+    color: white;
+}

@@ -58,11 +58,10 @@ What-the-golf was wacky, but this would be more wow or fascinating or cool. Make
 - [x] Make hole-12
 - [x] Lock hole-12
     - [x] Unlock when player reaches 11-star
+- [x] About page
+- [x] Settings page
 
 - [ ] Play test and log bugs
-
-- [ ] About page
-- [ ] Settings page
 
 - [ ] Carbon Ads https://www.carbonads.net/
 

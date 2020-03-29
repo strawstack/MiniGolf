@@ -1,0 +1,39 @@
+.settings-area {
+    grid-column: 2 / 3;
+    font-family: 'Varela Round', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.5rem;
+}
+.settings-area-title {
+    text-align: center;
+    font-size: 3.2rem;
+    color: white;
+    user-select: none;
+}
+.settings-area-return {
+    text-align: center;
+    margin: 40px 0px;
+    padding: 20px 0px;
+    cursor: pointer;
+    color: white;
+    background: #ABC8A6;
+    user-select: none;
+}
+.settings-area-return:hover {
+    background: #D9D7A2;
+}
+.settings-area-reset {
+    text-align: center;
+    margin: 40px 0px;
+    padding: 20px 0px;
+    cursor: pointer;
+    color: white;
+    background: #ABC8A6;
+    user-select: none;
+}
+.settings-area-reset:hover {
+    background: #555;
+}

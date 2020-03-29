@@ -486,7 +486,7 @@ class CreateHole {
         this.scene.input.on("pointerup", function(pointer) {
 
             // Only putt when ball stationary and menu closed
-            if (state.ballInMotion || state.showMenu) return;
+            if (state.ballInMotion || state.showMenu || state.bannerIsShowing) return;
             state.ballInMotion = true;
 
             // Ball position

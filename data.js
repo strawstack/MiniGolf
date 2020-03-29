@@ -8,6 +8,8 @@ let state = {
     updateScore: () => {},
     setHoleName: () => {},
     showLevelSelect: false,
+    showAboutPage: false,
+    showSettings: false,
     par: [0, 1, 2, 1, 2, 2, 2, 3, 2, 3, 3, 2, 6],
     bonusLocked: true,
     ballInMotion: false,
@@ -30,17 +32,20 @@ let state = {
             banner.querySelector(".message").innerHTML = "Nice work!";
         }
     },
+    bannerIsShowing: false,
     showBanner: (banner, show) => {
         if (show) {
             banner.style.position = "relative";
             banner.style.top = "0px";
             banner.style.opacity = 1;
+            state.bannerIsShowing = true;
         } else {
             banner.style.top = "-260px";
             banner.style.opacity = 0;
             setTimeout(() => {
                 banner.style.position = "absolute";
             }, 1000);
+            state.bannerIsShowing = false;
         }
     }
 };
