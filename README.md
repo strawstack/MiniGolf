@@ -2,6 +2,9 @@
 
 12-Hole MiniGolf. Made with HTML5, SVG, Phaser3, Figma, and MatterJS
 
+# Created by
+[Richard Hayes](https://richardhay.es/) 😊 and [Diana Dai](http://dianayu.org/) 🌹
+
 # Live Demo
 
 [View Live Demo](https://regularmemory.blog/MiniGolf/)
