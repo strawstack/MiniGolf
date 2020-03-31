@@ -568,7 +568,7 @@ class CreateHole {
                     hole.y + hole.radius);
                 ballGraphics.setVelocity(0, 0);
                 setTimeout(() => {
-                    onComplete();                    
+                    onComplete();
                 }, 100);
 
             } else if (_ball != undefined && _wall != undefined) {

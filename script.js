@@ -178,13 +178,27 @@ function main(game) {
         toggleLevelSelect(true);
     });
     nextLevel.addEventListener("click", e => {
+
+        determineStars();
+
         // Stop all scenes
         for (let scene of config.scene) {
             game.scene.stop(scene.scene.key);
         }
 
-        let nextHole = state.currentHole + 1;
-        if (nextHole > 12) nextHole = 1;
+        let nextHole;
+        if (state.currentHole == 11) {
+            console.log(state.bonusLocked);
+            if (state.bonusLocked) {
+                nextHole = 1;
+
+            } else { // state.bonusLocked = false
+                nextHole = 12;
+            }
+        } else {
+            nextHole = state.currentHole + 1;
+            if (nextHole > 12) nextHole = 1;
+        }
 
         // Hide the banner
         state.showBanner(banner, false);
