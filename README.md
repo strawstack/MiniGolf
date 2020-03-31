@@ -8,7 +8,7 @@
 
 # Screenshot
 
-[![](./screenshot.png)](#)
+[![](./screenshot2.png)](#)
 
 # Controls
 
