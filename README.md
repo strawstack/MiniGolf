@@ -4,11 +4,11 @@
 
 # Live Demo
 
-[View Live Demo](#)
+[View Live Demo](https://regularmemory.blog/MiniGolf/)
 
 # Screenshot
 
-[![](./screenshot2.png)](#)
+[![](./screenshot2.png)](https://regularmemory.blog/MiniGolf/)
 
 # Controls
 
