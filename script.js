@@ -188,7 +188,6 @@ function main(game) {
 
         let nextHole;
         if (state.currentHole == 11) {
-            console.log(state.bonusLocked);
             if (state.bonusLocked) {
                 nextHole = 1;
 
@@ -214,7 +213,14 @@ function main(game) {
         strokesNumber.innerHTML = number;
     };
     state.setHoleName = (name, holeNumber) => {
-        let cookies = document.cookie;
+        let cookies;
+        for (let cookie of document.cookie.split(";")) {
+            let key = cookie.split("=")[0].trim();
+            if (key == "golf") {
+                let value = cookie.split("=")[1].trim();
+                cookies = value;
+            }
+        }
         let star = (cookies[holeNumber-1] == "1")? " ⭐": "";
         holeName.innerHTML = name + star;
     };
@@ -243,7 +249,7 @@ function main(game) {
                 game.scene.stop(scene.scene.key);
             }
             // Start the entry scene
-            game.scene.start(config.scene[0].scene.key);
+            game.scene.start(config.scene[1].scene.key);
 
             // Reset strokes
             state.setStrokes(0);
@@ -256,8 +262,15 @@ function main(game) {
     });
 
     let determineStars = () => {
-        if (document.cookie === "") document.cookie = "000000000000";
-        let cookies = document.cookie;
+        if (document.cookie.indexOf("golf") === -1) document.cookie = "golf=000000000000";
+        let cookies;
+        for (let cookie of document.cookie.split(";")) {
+            let key = cookie.split("=")[0].trim();
+            if (key == "golf") {
+                let value = cookie.split("=")[1].trim();
+                cookies = value;
+            }
+        }
         let stars = document.querySelectorAll(".star-img");
         let star_count = 0;
         for (let i = 0; i < cookies.length; i++) {
@@ -307,14 +320,21 @@ function main(game) {
     settingsResetStars.addEventListener('click', e => {
         let res = confirm("Reset all star progress? (this cannot be undone)");
         if (res) {
-            document.cookie = "";
+            document.cookie = "golf=000000000000";
+
+            holeTwleveImg.className = "hole-img hole-img-locked lock";
+            holeTwelveLevel.className = "level-select-item bonus-hole lock";
+            state.bonusLocked = true;
+            let stars = document.querySelectorAll(".star-img");
+            stars[11].src = "empty.svg";
+
 
             // Reset current scene to remove possible star in HoleName
             for (let scene of config.scene) {
                 game.scene.stop(scene.scene.key);
             }
             // Start the entry scene
-            game.scene.start(config.scene[state.currentHole].scene.key);
+            game.scene.start(config.scene[1].scene.key);
 
             // Reset strokes
             state.setStrokes(0);

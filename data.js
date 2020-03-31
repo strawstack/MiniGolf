@@ -14,12 +14,19 @@ let state = {
     bonusLocked: true,
     ballInMotion: false,
     awardStar: (_state, holeNumber, holeName) => {
-        let cookies = document.cookie;
+        let cookies;
+        for (let cookie of document.cookie.split(";")) {
+            let key = cookie.split("=")[0].trim();
+            if (key == "golf") {
+                let value = cookie.split("=")[1].trim();
+                cookies = value;
+            }
+        }
         if (_state.strokes <= _state.par[holeNumber]) {
             cookies = cookies.split("");
             cookies[holeNumber-1] = "1";
             cookies = cookies.join("");
-            document.cookie = cookies;
+            document.cookie = "golf="+cookies;
             state.setHoleName(holeName, holeNumber);
             return true;
         }
