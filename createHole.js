@@ -509,7 +509,9 @@ class CreateHole {
             }
 
             // Sound
-            if (state.soundOn) this.scene.sound.play('putt');
+            try {
+                if (state.soundOn) this.scene.sound.play('putt');
+            } catch { }
 
             ballGraphics.applyForce({
                 x: nx * mag,
@@ -562,7 +564,10 @@ class CreateHole {
             if (bodyB.label == "wedge") { _wedge = bodyB; }
 
             if (_ball != undefined && _hole != undefined) {
-                if (state.soundOn) this.scene.sound.play('complete');
+                try {
+                    if (state.soundOn) this.scene.sound.play('complete');
+                } catch { }
+
                 ballGraphics.setPosition(
                     hole.x + hole.radius,
                     hole.y + hole.radius);
@@ -572,13 +577,19 @@ class CreateHole {
                 }, 100);
 
             } else if (_ball != undefined && _wall != undefined) {
-                if (state.soundOn) this.scene.sound.play('wall');
+                try{
+                    if (state.soundOn) this.scene.sound.play('wall');
+                } catch { }
 
             } else if (_ball != undefined && _rock != undefined) {
-                if (state.soundOn) this.scene.sound.play('rock');
+                try {
+                    if (state.soundOn) this.scene.sound.play('rock');
+                } catch { }
 
             }else if (_ball != undefined && _wedge != undefined) {
-                if (state.soundOn) this.scene.sound.play('wedge');
+                try {
+                    if (state.soundOn) this.scene.sound.play('wedge');
+                } catch { }
             }
         });
 
@@ -614,9 +625,14 @@ class CreateHole {
                         ballGraphics.setFriction(0.08);
                         ballGraphics.setFrictionAir(0.08);
                         if (inWater) {
-                            if (state.soundOn) this.scene.sound.play('water-enter');
+                            try {
+                                if (state.soundOn) this.scene.sound.play('water-enter');
+                            } catch { }
+
                         } else if (inSand) {
-                            if (state.soundOn) this.scene.sound.play('sand-enter');
+                            try{
+                                if (state.soundOn) this.scene.sound.play('sand-enter');
+                            } catch { }
                         }
                     }
                 } else {
@@ -629,7 +645,10 @@ class CreateHole {
                 // If ball stops in water, place it back at the start
                 let isStopped = this.stopped(ballGraphics.body.velocity);
                 if (inWater && isStopped) {
-                    if (state.soundOn) this.scene.sound.play('water-stop');
+                    try {
+                        if (state.soundOn) this.scene.sound.play('water-stop');
+                    } catch { }
+
                     ballGraphics.setPosition(
                         mat.x + mat.width/2,
                         mat.y + mat.height/2);
