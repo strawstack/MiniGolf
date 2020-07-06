@@ -7,11 +7,11 @@
 
 # Live Demo
 
-[View Live Demo](https://regularmemory.blog/MiniGolf/)
+[View Live Demo](https://strawstack.github.io/MiniGolf/)
 
 # Screenshot
 
-[![](./screenshot2.png)](https://regularmemory.blog/MiniGolf/)
+[![](./screenshot2.png)](https://strawstack.github.io/MiniGolf/)
 
 # Controls
 
